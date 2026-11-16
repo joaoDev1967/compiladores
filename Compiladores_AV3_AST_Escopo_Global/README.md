@@ -20,6 +20,8 @@ python compilador.py exemplos/erro_nao_declarada.c --sem-tokens
 python -m unittest discover -s tests -t . -v
 ```
 
+No Linux, execute `./INICIAR_LINUX.sh` para abrir a demonstração. Para analisar outro fonte, passe o caminho como argumento, por exemplo `./INICIAR_LINUX.sh exemplos/correto.c`, ou rode `python3 compilador.py "caminho do arquivo.c"` no terminal. Use `./TESTAR_LINUX.sh` para rodar a suíte.
+
 No Windows, execute `INICIAR_WINDOWS.bat` para abrir a demonstração. Para analisar outro fonte, arraste-o sobre esse arquivo ou rode `py -3 compilador.py "caminho do arquivo.c"` no terminal. Use `TESTAR_WINDOWS.bat` para rodar a suíte. A leitura aceita UTF-8, UTF-16 com BOM e Windows-1252.
 
 | Opção | Saída |
