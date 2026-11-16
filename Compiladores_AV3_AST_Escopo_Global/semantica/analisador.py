@@ -115,23 +115,19 @@ class TabelaSimbolos:
         return []
 
 
-    def registrar(self, token, tipo, categoria, assinatura=(), definido=False, java=False,
+    def registrar(self, token, tipo, categoria, assinatura=(), definido=False,
                   *, final=False, inicializado=False):
         caminho, escopo = self._escopos[-1]
-        namespace = categoria if java and categoria in ('Classe', 'Função') else None
-        vinculos = escopo.setdefault((token.lexema, namespace), [])
-        if categoria == 'Função' and not java:
+        vinculos = escopo.setdefault((token.lexema, None), [])
+        if categoria == 'Função':
             assinatura = tuple(_tipo_c_canonico(_ajustar_parametro_c(p)) for p in assinatura)
         for anterior in vinculos:
             if categoria != 'Função' or anterior.declaracao.categoria != 'Função':
                 return 'duplicado'
             if assinatura != anterior.assinatura:
-                if java:
-                    continue
                 return 'assinatura'
             tipo_anterior = anterior.declaracao.tipo
-            retorno_compativel = (tipo == tipo_anterior if java else
-                                 _tipo_c_canonico(tipo) == _tipo_c_canonico(tipo_anterior))
+            retorno_compativel = _tipo_c_canonico(tipo) == _tipo_c_canonico(tipo_anterior)
             if not retorno_compativel:
                 return 'assinatura'
             if definido and anterior.definido:
@@ -173,7 +169,7 @@ class AmbienteSemantico:
     def declarar(self, token, tipo, categoria='Variável', assinatura=(), definido=False,
                  *, final=False, inicializado=False):
         problema = self.tabela.registrar(
-            token, tipo, categoria, assinatura, definido, java=self.linguagem == 'java',
+            token, tipo, categoria, assinatura, definido,
             final=final, inicializado=inicializado)
         if problema:
             mensagem = (f"Assinatura de '{token.lexema}' incompatível com a declaração anterior."
@@ -278,14 +274,14 @@ class AmbienteSemantico:
             tipo = self.inferir(arvore.filhos[0])
             if tipo is None:
                 return None
-            if arvore.valor == '&' and self.linguagem != 'java':
+            if arvore.valor == '&':
                 return tipo + '*'
             if arvore.valor == '*' and tipo.endswith('*'):
                 return tipo[:-1]
             if arvore.valor == '!':
                 if tipo == 'boolean':
                     return 'boolean' if self.linguagem != 'c' else 'int'
-                if self.linguagem != 'java' and (self._numerico(tipo) or tipo.endswith(('*', '[]'))):
+                if (self._numerico(tipo) or tipo.endswith(('*', '[]'))):
                     return 'int'
             if arvore.valor in ('++', '--') and self._numerico(tipo):
                 return tipo
@@ -304,20 +300,19 @@ class AmbienteSemantico:
             if esquerda is None or direita is None:
                 return None
             if arvore.valor in ('==', '!=', '<', '<=', '>', '>='):
-                return 'boolean' if self.linguagem == 'java' else 'int'
+                return 'int'
             if arvore.valor in ('&&', '||', '&', '|', '^') and esquerda == direita == 'boolean':
                 return 'boolean'
             if arvore.valor == '+' and (
                     esquerda == direita == 'String' or
-                    (self.linguagem == 'java' and 'String' in (esquerda, direita))):
+                    False):
                 return 'String'
             promovidos = [self._numerico(tipo) for tipo in (esquerda, direita)]
             modulo_real_c = (self.linguagem == 'c' and arvore.valor == '%' and
                              any(t in ('float', 'double', 'long double') for t in promovidos))
             bits_reais = (arvore.valor in ('&', '|', '^', '<<', '>>', '>>>') and
                           any(t in ('float', 'double', 'long double') for t in promovidos))
-            logico_java_invalido = self.linguagem == 'java' and arvore.valor in ('&&', '||')
-            if None in promovidos or modulo_real_c or bits_reais or logico_java_invalido:
+            if None in promovidos or modulo_real_c or bits_reais :
                 self.erros.append(Diagnostico('SEMÂNTICO', arvore.token.linha,
                     arvore.token.coluna, "Operação '{}' inválida entre {} e {}.".format(
                         arvore.valor, esquerda, direita)))
@@ -343,15 +338,13 @@ class AmbienteSemantico:
         return None
 
     def _normalizar(self, tipo):
-        if self.linguagem == 'java':
-            return tipo
         if tipo == 'char':
             return tipo
         categoria = self._numerico(tipo)
         return 'int' if categoria in ('int', 'long', 'long long') else (categoria or tipo)
 
     def _tipos_compativeis(self, tipo_destino, tipo_origem, expressao, inicializador):
-        if self.linguagem != 'java' and expressao.classe == 'STRING':
+        if expressao.classe == 'STRING':
             literal_char = expressao.valor.startswith(('"', 'u8"'))
             if literal_char and (tipo_destino == 'char*' or (inicializador and tipo_destino == 'char[]')):
                 return True
@@ -361,25 +354,17 @@ class AmbienteSemantico:
             if '*' in tipo_destino:
                 tipo_origem = _ajustar_parametro_c(tipo_origem)
                 return _tipo_c_canonico(tipo_destino) == _tipo_c_canonico(tipo_origem)
-        if tipo_origem == 'null' and (tipo_destino == 'String' or
-                                      tipo_destino.endswith(('[]', '*'))):
+        if tipo_origem == 'null' and tipo_destino.endswith('*'):
             return True
         dest, orig = self._normalizar(tipo_destino), self._normalizar(tipo_origem)
         compativeis = {
-            'byte': {'byte'},
-            'short': {'byte', 'short'},
-            'int': {'byte', 'short', 'int', 'char'},
-            'long': {'byte', 'short', 'int', 'long', 'char'},
-            'float': {'byte', 'short', 'int', 'long', 'float', 'char'},
-            'double': {'byte', 'short', 'int', 'long', 'float', 'double', 'char'},
-            'long double': {'int', 'float', 'double', 'long double', 'char'},
+            'int': {'int'}, 'long': {'int', 'long'},
+            'long long': {'int', 'long', 'long long'},
+            'float': {'int', 'long', 'long long', 'float'},
+            'double': {'int', 'long', 'long long', 'float', 'double'},
+            'long double': {'int', 'long', 'long long', 'float', 'double', 'long double'},
             'char': {'char'},
-            'boolean': {'boolean'},
-            'String': {'String'},
         }
-        if (self.linguagem == 'java' and orig == 'int' and dest in ('byte', 'short', 'char')
-                and self._literal_cabe(dest, expressao)):
-            return True
         return orig in compativeis.get(dest, {dest})
 
     def validar_atribuicao(self, alvo, expressao, tipo_destino=None):

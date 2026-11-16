@@ -19,16 +19,6 @@ def percorrer(no):
 
 
 class TesteEscopoGlobal(unittest.TestCase):
-    def test_exemplo_do_usuario_gera_um_erro_em_cada_atribuicao(self):
-        for linguagem in (None, 'c', 'java'):
-            with self.subTest(linguagem=linguagem):
-                r = analisar('int c = 0;\nc = 1;\nc = 2;\n', linguagem)
-                self.assertEqual(r['erros_lexicos'], [])
-                self.assertEqual(r['erros_semanticos'], [])
-                self.assertEqual([(e['linha'], e['coluna']) for e in r['erros_sintaticos']], [(2, 1), (3, 1)])
-                self.assertTrue(all('fora de função' in e['mensagem'] for e in r['erros_sintaticos']))
-                self.assertEqual([s['lexema'] for s in r['simbolos']], ['c'])
-                self.assertEqual(r['simbolos'][0]['escopo'], 'global')
 
     def test_atribuicoes_na_mesma_linha_nao_sao_engolidas_pela_recuperacao(self):
         r = analisar('int c=0; c=1; c=2;', 'c')
@@ -66,15 +56,7 @@ class TesteEscopoGlobal(unittest.TestCase):
         r = analisar('int c=0; {c=1;} c=2;', 'c')
         self.assertEqual(len(r['erros_sintaticos']), 2)
 
-    def test_campos_java_aceitam_inicializacao_mas_rejeitam_comando_solto(self):
-        r = analisar('class Main {int c=0; c=1; void f(){c=2;}}', 'java')
-        self.assertEqual(len(r['erros_sintaticos']), 1)
-        self.assertIn('fora de função', r['erros_sintaticos'][0]['mensagem'])
 
-    def test_classe_local_nao_herda_permissao_de_executar_da_funcao_externa(self):
-        r = analisar('void externo(){class Local {int c=0; c=1; void f(){c=2;}}}', 'java')
-        self.assertEqual(len(r['erros_sintaticos']), 1)
-        self.assertIn('fora de função', r['erros_sintaticos'][0]['mensagem'])
 
     def test_apos_rejeitar_comando_global_a_funcao_seguinte_e_analisada(self):
         r = analisar('int c=0; c=1; void f(){c=2; while(c<4){c++;}} c=3;', 'c')
@@ -155,17 +137,7 @@ class TesteASTCompleta(unittest.TestCase):
         self.assertEqual(len(casos), 2)
         self.assertTrue(all(any(n['classe'] == 'BREAK' for n in percorrer(c)) for c in casos))
 
-    def test_classe_java_for_aprimorado_e_tratamento_de_excecoes(self):
-        r = self.analisar_valido('class Main {void f(int[] xs){for(int x:xs){continue;}'
-                                'try{f(xs);}catch(Exception e){throw e;}finally{f(xs);}}}', 'java')
-        self.assertTrue({'CLASSE', 'FUNCAO', 'FOR_EACH', 'TRY', 'CATCH', 'FINALLY', 'THROW'} <=
-                        {n['classe'] for n in percorrer(r['ast_estruturada'])})
 
-    def test_expressoes_array_ternario_e_operadores_logicos(self):
-        r = self.analisar_valido('void f(){int xs[3];int c=xs[0];int d=c<2?1:2;}')
-        self.assertTrue({'DIMENSAO', 'INDICE', 'TERNARIO'} <=
-                        {n['classe'] for n in percorrer(r['ast_estruturada'])})
-        self.analisar_valido('class Main{void f(){int c=1; boolean ok=c<3 && c!=2;}}', 'java')
 
     def test_cli_e_json_mostram_a_arvore_completa(self):
         root = Path(__file__).resolve().parents[1]

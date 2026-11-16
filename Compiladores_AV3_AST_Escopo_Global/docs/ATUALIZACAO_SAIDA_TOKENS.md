@@ -9,7 +9,6 @@ O arquivo `compilador.py` passou a apresentar os tokens como linhas simples, seg
 • contador → ID
 ```
 
-- `KEYWORD`: palavra reservada de C/Java ou `include` no contexto de uma diretiva C.
 - `ID`: identificador.
 - `NUMBER`, `STRING`, `CHAR`, `OPERATOR`, `DELIMITER`, `PREPROCESSOR`: outras categorias de exibição.
 - Em `#include <stdio.h>`, a saída é `# → PUNCTUATOR`, `include → KEYWORD` e `<stdio.h> → HEADER_NAME`. Cabeçalhos entre aspas também usam `HEADER_NAME`.

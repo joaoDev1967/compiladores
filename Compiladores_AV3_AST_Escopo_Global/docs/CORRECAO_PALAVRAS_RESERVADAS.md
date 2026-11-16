@@ -25,7 +25,6 @@ três testes existentes que exigiam palavras reservadas na tabela. A suíte comp
 naquela revisão tinha 155 testes e foi executada com Python 3.12.14 em Linux.
 
 A cobertura inclui todas as palavras reservadas reconhecidas pelo lexer em C,
-Java e modo didático; análise de programas nas duas linguagens; nomes parecidos
 com palavras reservadas; palavras reservadas usadas como nomes inválidos;
 frequências léxicas; tabela vazia; ordem e escopos; e saída no terminal e em JSON.
 
@@ -34,7 +33,6 @@ Para repetir a verificação na pasta que contém `compilador.py`:
 ```bash
 python -m unittest discover -s tests -t . -v
 python compilador.py exemplos/demonstracao_tokens.c
-python compilador.py exemplos/correto.java --sem-tokens
 ```
 
 O projeto continua com a gramática didática documentada em

@@ -54,10 +54,6 @@ class TesteFormatacaoTokens(unittest.TestCase):
                          ['PUNCTUATOR', 'KEYWORD', 'HEADER_NAME', 'KEYWORD', 'ID', 'OPERATOR',
                           'CHAR', 'DELIMITER', 'STRING'])
 
-    def test_palavras_reservadas_c_e_java(self):
-        tokens, _ = tokenizar('public class Exemplo { int total = 1; }')
-        self.assertEqual([categoria_exibicao(t) for t in tokens][:3],
-                         ['KEYWORD', 'KEYWORD', 'ID'])
 
     def test_fallback_cp1252(self):
         tok, _ = tokenizar('if contador')

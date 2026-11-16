@@ -10,12 +10,10 @@ tabela de símbolos. Aplica os dois itens do pedido atual.
 
 A AST tem raiz `PROGRAMA`. Funções possuem tipo, parâmetros e bloco; comandos
 pertencem aos respectivos corpos. A saída principal inclui declarações,
-funções/protótipos, classes, `if/else`, `while`, `for`, `for` aprimorado Java,
 `do/while`, `switch/case/default`, chamadas, retornos, saltos e tratamento de
 exceções reconhecido. Operadores respeitam precedência e associatividade.
 
 O `else` se associa ao `if` aberto mais próximo. Cada cláusula de `for` tem seu
-próprio nó. Os métodos Java adiados para reconhecer campos posteriores preenchem
 o corpo do mesmo nó da função, na ordem do fonte.
 
 O terminal e a chave JSON `ast` mostram a árvore completa.
@@ -61,7 +59,6 @@ quando nenhuma linguagem é informada.
 
 ```bash
 python compilador.py exemplos/ast_completa.c --sem-tokens
-python compilador.py exemplos/Estruturas.java --json resultado.json
 python compilador.py exemplos/erro_escopo_global.c --sem-tokens
 python compilador.py exemplos/escopo_global_correto.c --sem-tokens
 python -m unittest discover -s tests -t . -v
@@ -69,4 +66,3 @@ python -m unittest discover -s tests -t . -v
 
 As saídas demonstrativas foram regeneradas. O projeto mantém a biblioteca padrão
 e a gramática Python 3.7. A sintaxe e a validação semântica continuam didáticas;
-representar uma construção na AST não implementa todas as regras de C/Java.

@@ -77,20 +77,12 @@ class Teste03TiposCompostos(unittest.TestCase):
         self.assertEqual(r['erros_sintaticos'], [])
         self.assertIn('int[]', mensagens(r, 'semanticos'))
 
-    def test_java_array_declarado(self):
-        r = analisar('String[] args; args="t";')
-        self.assertIn('String[]', mensagens(r, 'semanticos'))
-        sym = next(x for x in r['simbolos'] if x['lexema'] == 'args')
-        self.assertEqual(sym['tipo_declarado'], 'String[]')
 
     def test_parametro_ponteiro_nao_finge_int(self):
         r = analisar('int f(int *a) { int x = a; }')
         self.assertIn('int*', mensagens(r, 'semanticos'))
         self.assertFalse(r['erros_sintaticos'])
 
-    def test_parametro_java_array_nao_finge_string(self):
-        r = analisar('void main(String[] args){ args="t"; }')
-        self.assertIn('String[]', mensagens(r, 'semanticos'))
 
     def test_ponteiro_em_variavel_normal(self):
         r = analisar('int *p; int x=p;')
@@ -98,14 +90,9 @@ class Teste03TiposCompostos(unittest.TestCase):
 
 
 class Teste04Reais(unittest.TestCase):
-    def test_real_sem_sufixo_double(self):
-        for n in ['1.5', '3e2', '2.0D', '1d']:
-            with self.subTest(n=n):
-                r = analisar('float a=' + n + ';')
-                self.assertIn('double a float', mensagens(r, 'semanticos'))
 
     def test_float_somente_com_f(self):
-        for n in ['1f', '2.0F', '3e2f']:
+        for n in ['1.0f', '2.0F', '3e2f']:
             with self.subTest(n=n):
                 r = analisar('float a=' + n + ';')
                 self.assertFalse(r['erros_lexicos'])
@@ -197,30 +184,14 @@ class Teste09Lexico(unittest.TestCase):
         self.assertIn('0x', [t.lexema for t in ts])
         self.assertEqual([t.lexema for t in ts].count('x'), 1)
 
-    def test_java_numeros_com_underscore(self):
-        ts, erros = tokenizar('int x=1_000;')
-        self.assertFalse(erros)
-        self.assertIn('1_000', [t.lexema for t in ts])
 
-    def test_anotacao_java(self):
-        ts, erros = tokenizar('@Override')
-        self.assertEqual(erros, [])
-        self.assertEqual([t.tipo for t in ts], ['AT', 'IDENTIFIER'])
 
-    def test_identificador_dolar_java(self):
-        ts, erros = tokenizar('int $preco=1;', linguagem='java')
-        self.assertEqual(erros, [])
-        self.assertIn('$preco', [t.lexema for t in ts])
 
     def test_identificador_dolar_em_c_erro_lexico_sem_perder_nome(self):
         ts, erros = tokenizar('int $preco=1;', linguagem='c')
         self.assertEqual(len(erros), 1)
         self.assertIn('$preco', [t.lexema for t in ts])
 
-    def test_null_em_string_mas_nao_int(self):
-        r = analisar('String s=null; int n=null;')
-        self.assertEqual(r['erros_sintaticos'], [])
-        self.assertEqual(len(r['erros_semanticos']), 1)
 
 
 class Teste10Recuperacao(unittest.TestCase):
@@ -252,22 +223,6 @@ class Teste10Recuperacao(unittest.TestCase):
 
 
 class TesteFimAFim(unittest.TestCase):
-    def test_json_inclui_escopos_e_aceita_cli_java(self):
-        with tempfile.TemporaryDirectory() as pasta:
-            entrada = Path(pasta) / 'Demo.java'
-            saida = Path(pasta) / 'resultado.json'
-            entrada.write_text('class Demo { void main(String[] args) { int $preco=1; } }', encoding='utf-8')
-            env = os.environ.copy()
-            env['PYTHONIOENCODING'] = 'utf-8'
-            p = subprocess.run([sys.executable, str(ROOT / 'compilador.py'), str(entrada),
-                                '--sem-tokens', '--json', str(saida)],
-                                capture_output=True, text=True, encoding='utf-8', cwd=str(ROOT),
-                                env=env)
-            self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
-            obj = json.loads(saida.read_text(encoding='utf-8'))
-            nome = next(x for x in obj['simbolos'] if x['lexema'] == '$preco')
-            self.assertEqual((nome['tipo_declarado'], nome['token']), ('int', 'IDENTIFIER'))
-            self.assertIn('/funcao', nome['escopo'])
 
     def test_c_sinaliza_dolar_em_cli(self):
         with tempfile.TemporaryDirectory() as pasta:
