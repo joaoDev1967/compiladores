@@ -2,7 +2,6 @@
 
 Esta versão representa a hierarquia das construções reconhecidas e valida o
 contexto das instruções. A extensão seleciona as palavras reservadas e os
-formatos de literal. A cobertura de C/Java continua didática.
 
 ## Declarações e instruções
 
@@ -19,12 +18,10 @@ if            ::= "if" "(" expressao ")" item [ "else" item ]
 while         ::= "while" "(" expressao ")" item
 for           ::= "for" "(" [ inicializacao ] ";" [ expressao ] ";"
                   [ expressoes ] ")" item
-for_java      ::= "for" "(" tipo declarador ":" expressao ")" item
 do_while      ::= "do" item "while" "(" expressao ")" ";"
 retorno       ::= "return" [ expressao ] ";"
 ```
 
-A AST também representa classes/interfaces Java, modificadores, parâmetros,
 herança, `throws`, `switch/case/default`, `try/catch/finally`, `throw`, chamadas,
 `break`, `continue`, `goto`, rótulos, `synchronized`, `assert`, anotações,
 `package`, `import`, diretivas C e instruções vazias reconhecidas.
@@ -41,7 +38,6 @@ adição/subtração e multiplicação/divisão/módulo. Incluem unários, incre
 decremento, chamadas, acesso a membros e indexação. Atribuições associam à direita.
 
 Os declaradores mantêm os tipos conhecidos da base: primitivos, composições C,
-`String` no Java e aliases visíveis. Asteriscos pertencem aos declaradores C.
 Arrays mantêm dimensões e tamanhos reconhecidos em nós `DIMENSAO`.
 
 ## Hierarquia da AST
@@ -52,8 +48,6 @@ O `IF` tem `CONDICAO`, `ENTAO` e, se existir, `ELSE`. Um `else if` contém outro
 `IF`, e o `else` se associa ao `if` aberto mais próximo.
 
 O `FOR` tem filhos separados para `INICIALIZACAO`, `CONDICAO`, `ATUALIZACAO` e
-`CORPO`. Cláusulas omitidas mantêm seus nós vazios. O `FOR_EACH` Java tem declaração,
-`ITERAVEL` e corpo. Os casos de `SWITCH` agrupam suas instruções. Métodos Java
 adiados preenchem o mesmo nó de função, mantendo a ordem original.
 
 O terminal e o campo JSON `ast` mostram a árvore completa. O campo
@@ -68,7 +62,6 @@ laço externo recebe um diagnóstico sintático na sua posição inicial.
 Um bloco solto não equivale a uma função. Protótipos e funções já encerradas
 não autorizam comandos seguintes no escopo global. Uma classe também não herda
 a permissão de execução de uma função externa; seus métodos têm seus próprios
-corpos. Blocos de inicialização de classes Java não pertencem ao subconjunto
 implementado nesta versão.
 
 Cada instrução externa completa recebe um erro, inclusive quando várias estão
@@ -89,7 +82,6 @@ mudanças de contagem e unificação do pedido anterior.
 
 A busca de variáveis começa no escopo mais interno. A saída de um bloco encerra
 seus vínculos ativos e conserva o histórico. O mesmo vale para parâmetros,
-variáveis de `for` e aliases. Campos Java podem ser usados por métodos escritos
 antes deles. Campos e métodos homônimos têm espaços de nomes distintos.
 
 A validação mantém regras didáticas para declarações, atribuições, tipos,

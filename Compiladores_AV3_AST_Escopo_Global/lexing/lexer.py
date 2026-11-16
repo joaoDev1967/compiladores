@@ -1,9 +1,8 @@
-"""Tokenização C/Java com lexemas, localizações e recuperação lexical."""
+"""Tokenização de C com lexemas, localizações e recuperação lexical."""
 import re
 
 from lexing.tokens import (
-    Diagnostico, OPERADORES, OPERADORES_C, OPERADORES_JAVA,
-    RESERVADAS, RESERVADAS_C, RESERVADAS_JAVA, Token,
+    Diagnostico, OPERADORES, OPERADORES_C, RESERVADAS, RESERVADAS_C, Token,
 )
 
 
@@ -12,9 +11,8 @@ def _regex_operadores(operadores):
 
 
 _REGEX_OPERADORES = {None: _regex_operadores(OPERADORES),
-                    'c': _regex_operadores(OPERADORES_C),
-                    'java': _regex_operadores(OPERADORES_JAVA)}
-_RESERVADAS = {None: RESERVADAS, 'c': RESERVADAS_C, 'java': RESERVADAS_JAVA}
+                    'c': _regex_operadores(OPERADORES_C)}
+_RESERVADAS = {None: RESERVADAS, 'c': RESERVADAS_C}
 _ESPACOS = re.compile(r'\s+')
 _QUEBRA = re.compile(r'\r\n|\r|\n')
 _DIRETIVA = re.compile(r'(?:#|%:)(?:\\(?:\r\n|\r|\n)|[^\r\n])*')
@@ -22,19 +20,15 @@ _DIRETIVA = re.compile(r'(?:#|%:)(?:\\(?:\r\n|\r|\n)|[^\r\n])*')
 _CANDIDATO_DEC = re.compile(r'(?:[0-9]|\.[0-9])(?:[eE][+-]|[\w$.])*')
 _CANDIDATO_HEX = re.compile(r'0[xX](?:[pP][+-]|[\w$.])*')
 _ESCAPE_C = r"\\(?:['\"?\\abfnrtv]|[0-7]{1,3}|x[0-9A-Fa-f]+|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})"
-_ESCAPE_JAVA = r"\\(?:['\"\\bfnrst]|[0-3][0-7]{0,2}|[4-7][0-7]?|u+[0-9A-Fa-f]{4})"
 _CHAR = {
     'c': re.compile(r"[^'\\\r\n]|" + _ESCAPE_C),
-    'java': re.compile(r"[^'\\\r\n]|" + _ESCAPE_JAVA),
-    None: re.compile(r"[^'\\\r\n]|" + _ESCAPE_C + '|' + _ESCAPE_JAVA),
+    None: re.compile(r"[^'\\\r\n]|" + _ESCAPE_C),
 }
 _STRING = {
     'c': re.compile(r"(?:[^\\]|" + _ESCAPE_C + r"|\\(?:\r\n|\r|\n))*"),
-    'java': re.compile(r"(?:[^\\]|" + _ESCAPE_JAVA + ")*"),
-    None: re.compile(r"(?:[^\\]|" + _ESCAPE_C + '|' + _ESCAPE_JAVA + ")*"),
+    None: re.compile(r"(?:[^\\]|" + _ESCAPE_C + ")*"),
 }
 _ABERTURA_BLOCO_TEXTO = re.compile(r'[ \t\f]*(?:\r\n|\r|\n)')
-_BLOCO_TEXTO_JAVA = re.compile(r"(?:[^\\]|" + _ESCAPE_JAVA + r"|\\(?:\r\n|\r|\n))*")
 _PREFIXO_C = re.compile(r"""(?:u8|[LuU])(?=['"])""")
 
 
@@ -45,8 +39,8 @@ def _regex_numeros(linguagem):
     bindig = r'[01](?:' + separador + r'[01])*'
     octdig = r'0(?:' + separador + r'[0-7])*'
     sufixo_int_c = r'(?:[uU](?:ll|LL|[lL])?|(?:ll|LL|[lL])[uU]?)?'
-    sufixo_int = r'[lL]?' if linguagem == 'java' else sufixo_int_c
-    sufixo_real = r'[fFlL]?' if linguagem == 'c' else r'[fFdD]?'
+    sufixo_int = sufixo_int_c
+    sufixo_real = r'[fFlL]?'
     expoente = r'[eE][+-]?' + dig
     decimal = r'(?:' + dig + r'\.(?:' + dig + r')?|\.' + dig + ')'
     hex_real = r'0[xX](?:' + hexdig + r'(?:\.(?:' + hexdig + r')?)?|\.' + hexdig + ')'
@@ -57,12 +51,10 @@ def _regex_numeros(linguagem):
         r'(?:' + decimal + r'(?:' + expoente + ')?|' + dig + expoente + ')' + sufixo_real,
         hex_real + r'[pP][+-]?' + dig + sufixo_real,
     ]
-    if linguagem != 'c':
-        formas.append(dig + r'[fFdD]')
     return re.compile('|'.join(formas))
 
 
-_NUMEROS = {linguagem: _regex_numeros(linguagem) for linguagem in (None, 'c', 'java')}
+_NUMEROS = {linguagem: _regex_numeros(linguagem) for linguagem in (None, 'c')}
 
 
 def _fim_aspas(codigo, inicio, aspas, aceita_continuacao=False):
@@ -184,10 +176,9 @@ def tokenizar(codigo: str, linguagem=None):
             posicao = espacos.end()
         elif codigo.startswith('//', inicio):
             quebra = _QUEBRA.search(codigo, inicio)
-            if linguagem != 'java':
-                # Em C, a junção de linhas ocorre antes de remover comentários.
-                while quebra and codigo[quebra.start() - 1] == '\\':
-                    quebra = _QUEBRA.search(codigo, quebra.end())
+            # Em C, a junção de linhas ocorre antes de remover comentários.
+            while quebra and codigo[quebra.start() - 1] == '\\':
+                quebra = _QUEBRA.search(codigo, quebra.end())
             posicao = quebra.start() if quebra else len(codigo)
         elif codigo.startswith('/*', inicio):
             fechamento = codigo.find('*/', inicio + 2)
@@ -195,18 +186,17 @@ def tokenizar(codigo: str, linguagem=None):
                 erros.append(Diagnostico('LÉXICO', linha, coluna, 'Comentário de bloco não terminado.'))
                 break
             posicao = fechamento + 2
-        elif (linguagem != 'java' and linha_so_espaco and
+        elif (linha_so_espaco and
               (atual == '#' or (codigo.startswith('%:', inicio) and
                                 not codigo.startswith('%:%:', inicio)))):
             tipo, posicao = 'PREPROCESSADOR', _DIRETIVA.match(codigo, inicio).end()
         else:
             # Prefixos C de string/char fazem parte do mesmo lexema.
-            prefixo = _PREFIXO_C.match(codigo, inicio) if linguagem != 'java' and atual in 'LuU' else None
+            prefixo = _PREFIXO_C.match(codigo, inicio) if atual in 'LuU' else None
             pos_aspa = prefixo.end() if prefixo else inicio
             aspa = codigo[pos_aspa]
             if aspa in ('"', "'"):
-                aspas = '"""' if aspa == '"' and linguagem != 'c' and codigo.startswith(
-                    '"""', pos_aspa) else aspa
+                aspas = aspa
                 fim = _fim_aspas(codigo, pos_aspa, aspas,
                                  aceita_continuacao=linguagem == 'c' and aspa == '"')
                 if fim is None:
@@ -224,10 +214,8 @@ def tokenizar(codigo: str, linguagem=None):
                     conteudo = codigo[pos_aspa + len(aspas):fim - len(aspas)]
                     if tipo == 'CHAR_LITERAL' and not _CHAR[linguagem].fullmatch(conteudo):
                         tipo, erro = 'INVALID_LITERAL', 'Literal de caractere inválido.'
-                    elif len(aspas) == 3 and not _ABERTURA_BLOCO_TEXTO.match(conteudo):
-                        tipo, erro = 'INVALID_LITERAL', 'Bloco de texto Java requer quebra após a abertura.'
                     elif tipo == 'STRING':
-                        padrao = _BLOCO_TEXTO_JAVA if len(aspas) == 3 else _STRING[linguagem]
+                        padrao = _STRING[linguagem]
                         if not padrao.fullmatch(conteudo):
                             tipo, erro = 'INVALID_LITERAL', 'Escape inválido no literal de texto.'
             else:

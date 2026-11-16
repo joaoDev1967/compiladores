@@ -4,7 +4,6 @@
 Exemplos:
     python compilador.py hello.c
     python compilador.py exemplos/erro_tipos.c --sem-tokens
-    python compilador.py exemplos/correto.java --json resultado.json
 """
 import argparse
 from dataclasses import asdict
@@ -195,7 +194,7 @@ def main(argv=None):
         description='AV3: analisador léxico, sintático e semântico básico.')
     cli.add_argument('arquivo', nargs='?', type=Path,
                      default=Path(__file__).resolve().with_name('hello.c'),
-                     help='Caminho para arquivo .c ou .java (padrão: hello.c).')
+                     help='Caminho para arquivo .c (padrão: hello.c).')
     grupo_tokens = cli.add_mutually_exclusive_group()
     grupo_tokens.add_argument(
         '--sem-tokens', action='store_true', help='Ocultar a lista de tokens.')
@@ -212,8 +211,8 @@ def main(argv=None):
         if hasattr(stream, 'reconfigure'):
             stream.reconfigure(errors='backslashreplace')
 
-    if args.arquivo.suffix.lower() not in ('.c', '.java'):
-        print('ERRO: o arquivo de entrada deve terminar em .c ou .java.',
+    if args.arquivo.suffix.lower() != '.c':
+        print('ERRO: o arquivo de entrada deve terminar em .c.',
               file=sys.stderr)
         return 2
     try:
@@ -222,7 +221,7 @@ def main(argv=None):
         print(f'ERRO: falha ao ler {args.arquivo}: {exc}', file=sys.stderr)
         return 2
 
-    linguagem = args.arquivo.suffix.lower().lstrip('.')
+    linguagem = 'c'
     if args.apenas_tokens and not args.json:
         tokens, erros = tokenizar(codigo, linguagem)
         mostrar_tokens([asdict(token) for token in tokens],

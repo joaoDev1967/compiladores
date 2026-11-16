@@ -79,23 +79,12 @@ class TesteLexico(unittest.TestCase):
         self.assertEqual(t1[-1].linha, 2)
         self.assertEqual(t2[0].linha, 1)
 
-    def test_string_e_identificador_java_nao_palavra_reservada(self):
-        ts, es = tokenizar('String nome = "teste";')
-        self.assertFalse(es)
-        self.assertEqual(ts[0].tipo, 'IDENTIFIER')  # String é classe em Java.
-        self.assertEqual(ts[3].tipo, 'STRING')
 
     def test_crlf_linhas(self):
         ts, es = tokenizar('int a;\r\nint b;')
         self.assertFalse(es)
         self.assertEqual(ts[3].linha, 2)
 
-    def test_palavras_java(self):
-        ts, es = tokenizar('public class Exemplo { boolean ativo = true; }')
-        self.assertFalse(es)
-        self.assertIn('PUBLIC', [t.tipo for t in ts])
-        self.assertIn('CLASS', [t.tipo for t in ts])
-        self.assertIn('TRUE', [t.tipo for t in ts])
 
 
 class TesteSimbolos(unittest.TestCase):
@@ -190,11 +179,6 @@ class TesteSintatico(unittest.TestCase):
         r = analisar('int main() { int x=1;')
         self.assertTrue(any('Faltam' in e['mensagem'] for e in r['erros_sintaticos']))
 
-    def test_funcao_void_java(self):
-        r = analisar('public class Exemplo { public static void main(String[] args) { int x=1; } }')
-        self.assertFalse(r['erros_sintaticos'])
-        self.assertFalse(r['erros_semanticos'])
-        self.assertEqual(len(r['ast_comandos']), 1)
 
     def test_scanner_arquivo_original(self):
         r = analisar((ROOT/'hello.c').read_text(encoding='utf8'))
@@ -202,11 +186,6 @@ class TesteSintatico(unittest.TestCase):
         self.assertFalse(r['erros_sintaticos'])
         self.assertFalse(r['erros_semanticos'])
 
-    def test_arquivo_java_de_exemplo(self):
-        r = analisar((ROOT/'exemplos'/'correto.java').read_text(encoding='utf8'))
-        self.assertEqual(len(r['ast_comandos']),4)
-        self.assertFalse(r['erros_sintaticos'])
-        self.assertFalse(r['erros_semanticos'])
 
 
 class TesteSemantico(unittest.TestCase):
@@ -232,17 +211,8 @@ class TesteSemantico(unittest.TestCase):
         r=analisar('int x = 1.5;')
         self.assertEqual(len(r['erros_semanticos']),1)
 
-    def test_texto_valido_em_string_java(self):
-        r=analisar('String s = "texto";')
-        self.assertFalse(r['erros_semanticos'])
 
-    def test_boolean_aceita_boolean(self):
-        r=analisar('boolean ativo = true;')
-        self.assertFalse(r['erros_semanticos'])
 
-    def test_boolean_rejeita_inteiro(self):
-        r=analisar('boolean ativo = 1;')
-        self.assertEqual(len(r['erros_semanticos']),1)
 
     def test_char_aceita_caractere(self):
         r=analisar("char letra = 'A';")
@@ -292,25 +262,12 @@ class TesteCLI(unittest.TestCase):
         self.assertEqual(p.returncode,1)
         self.assertIn('[ERRO SEMÂNTICO]',p.stdout)
 
-    def test_cli_json(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            out=Path(tmp)/'relatorio.json'
-            p=self.executar(ROOT/'exemplos'/'correto.java','--json',out,'--sem-tokens')
-            self.assertEqual(p.returncode,0,p.stderr)
-            dado=json.loads(out.read_text(encoding='utf8'))
-            self.assertEqual(len(dado['ast']), 1)
-            self.assertEqual(dado['ast_estruturada']['classe'], 'PROGRAMA')
-            self.assertTrue(dado['tokens'])
 
     def test_cli_arquivo_inexistente(self):
         p=self.executar(ROOT/'nao_existe.c')
         self.assertEqual(p.returncode,2)
         self.assertIn('falha ao ler',p.stderr)
 
-    def test_cli_extensao_rejeitada(self):
-        p=self.executar(ROOT/'README.md')
-        self.assertEqual(p.returncode,2)
-        self.assertIn('.c ou .java',p.stderr)
 
     def test_cli_erros_lexicos_exit_code(self):
         with tempfile.TemporaryDirectory() as tmp:

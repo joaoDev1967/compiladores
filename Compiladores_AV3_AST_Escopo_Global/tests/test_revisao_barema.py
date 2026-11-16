@@ -34,22 +34,6 @@ def ambiente_utf8():
 
 
 class TesteTabelaRevisada(unittest.TestCase):
-    def test_reservadas_da_extensao_e_dados_da_primeira_ocorrencia(self):
-        for linguagem, codigo, nome in (
-                ('c', '\n  int public = 1; int class = public;', 'public'),
-                ('java', '\n  int unsigned = 1; unsigned = 2;', 'unsigned')):
-            with self.subTest(linguagem=linguagem):
-                r = analisar(codigo, linguagem)
-                self.assertFalse(r['erros_sintaticos'] or r['erros_semanticos'])
-                t = simbolos(r)
-                reservadas = {p['lexema']: p for p in r['palavras_reservadas']}
-                self.assertEqual(list(reservadas), ['int'])
-                self.assertEqual((reservadas['int']['token'], reservadas['int']['ocorrencias']),
-                                 ('INT', 2 if linguagem == 'c' else 1))
-                self.assertNotIn('int', t)
-                self.assertEqual((t[nome]['ordem'], t[nome]['token'], t[nome]['tipo_declarado']),
-                                 (1, 'IDENTIFIER', 'int'))
-                self.assertEqual((t[nome]['linha'], t[nome]['coluna']), (2, 7))
 
     def test_identificador_invalido_nao_vira_simbolo(self):
         r = analisar('int $indevido; int valido=1;', 'c')
@@ -122,35 +106,10 @@ class TesteTabelaRevisada(unittest.TestCase):
         self.assertTrue(all(n not in t for n in ('f', 'g', 'x', 'n')))
         self.assertEqual(t['ok']['tipo_declarado'], 'int')
 
-    def test_classe_e_sobrecargas_java(self):
-        r = analisar('class Demo { synchronized void f(int a) throws java.io.IOException { int x=a; } '
-                     'void f(float a) { float x=a; } }', 'java')
-        self.assertFalse(r['erros_sintaticos'] or r['erros_semanticos'])
-        t = r['simbolos']
-        demo = next(s for s in t if s['lexema'] == 'Demo')
-        funcoes = [s for s in t if s['lexema'] == 'f']
-        parametros = [s for s in t if s['lexema'] == 'a']
-        self.assertEqual(demo['categoria'], 'Classe')
-        self.assertEqual(len(funcoes), 2)
-        self.assertEqual([s['tipo_declarado'] for s in parametros], ['int', 'float'])
 
 
 class TesteLexicoRevisado(unittest.TestCase):
-    def test_palavras_de_c_e_tipos_java_preservam_contexto(self):
-        c, erros_c = tokenizar('inline _Bool bool; int String;', 'c')
-        j, erros_j = tokenizar('String var; int goto;', 'java')
-        self.assertFalse(erros_c or erros_j)
-        self.assertEqual([t.tipo for t in c if t.lexema in ('inline', '_Bool', 'bool', 'String')],
-                         ['INLINE', '_BOOL', 'IDENTIFIER', 'IDENTIFIER'])
-        self.assertEqual([t.tipo for t in j if t.lexema in ('String', 'var', 'goto')],
-                         ['IDENTIFIER', 'IDENTIFIER', 'GOTO'])
 
-    def test_operadores_e_lexemas_java(self):
-        tokens, erros = tokenizar('a >>>= 2; a >>> 2; Tipo::metodo; (x) -> x; @ Anotacao', 'java')
-        self.assertFalse(erros)
-        tipos = {t.lexema: t.tipo for t in tokens}
-        self.assertEqual([tipos[t] for t in ('>>>=', '>>>', '::', '->', '@')],
-                         ['URSHIFT_ASSIGN', 'URSHIFT', 'METHOD_REF', 'ARROW', 'AT'])
 
     def test_diretiva_continuada_e_posicao_com_crlf_e_cr(self):
         codigo = '#define SOMA 1 + ' + chr(92) + '\r\n 2\r\n\tint x;\rint y;'
@@ -165,12 +124,6 @@ class TesteLexicoRevisado(unittest.TestCase):
         self.assertEqual([t.lexema for t in tokens if t.tipo == 'INVALID_NUMBER'], ['1e+', '08', '1.0LL'])
         self.assertEqual(len(erros), 3)
 
-    def test_sufixos_e_separadores_conforme_a_extensao(self):
-        c, ec = tokenizar('2UL 1.2L 1_000 2d', 'c')
-        j, ej = tokenizar('2UL 1__000 2d', 'java')
-        self.assertEqual([t.tipo for t in c], ['NUMBER', 'NUMBER', 'INVALID_NUMBER', 'INVALID_NUMBER'])
-        self.assertEqual([t.tipo for t in j], ['INVALID_NUMBER', 'NUMBER', 'NUMBER'])
-        self.assertEqual((len(ec), len(ej)), (2, 1))
 
     def test_escapes_invalidos_e_char_octal(self):
         tokens, erros = tokenizar(r"""'\141' "\q"; int x;""", 'c')
@@ -192,17 +145,7 @@ class TesteFluxoRevisado(unittest.TestCase):
         self.assertNotIn('i', simbolos(r))
         self.assertEqual(simbolos(r)['z']['tipo_declarado'], 'int')
 
-    def test_campo_qualificado_nao_vira_atribuicao_a_variavel_local(self):
-        r = analisar('class Demo { void f() { objeto.campo = 1; int campo=2; campo=3; } }', 'java')
-        self.assertEqual(len(r['ast_comandos']), 2)
-        self.assertFalse(r['erros_sintaticos'] or r['erros_semanticos'])
 
-    def test_unario_rejeita_string_e_java_concatena(self):
-        r = analisar('String s="x"+1; String t=-"x"; long l=1L; int n=l;', 'java')
-        self.assertFalse(r['erros_sintaticos'])
-        self.assertEqual(len(r['erros_semanticos']), 2)
-        self.assertIn('unária', r['erros_semanticos'][0]['mensagem'])
-        self.assertIn('long a int', r['erros_semanticos'][1]['mensagem'])
 
     def test_tokens_detalhados_sem_truncar_e_erro_lexico_visivel(self):
         with tempfile.TemporaryDirectory() as pasta:
