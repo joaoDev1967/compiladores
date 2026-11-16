@@ -1,7 +1,7 @@
-"""Parser C/Java didático com AST hierárquica, escopos e recuperação."""
+"""Parser C didático com AST hierárquica, escopos e recuperação."""
 from contextlib import contextmanager
 from lexing.tokens import (
-    Diagnostico, MODIFICADORES_C, MODIFICADORES_JAVA, TIPOS_C, TIPOS_JAVA,
+    Diagnostico, MODIFICADORES_C, TIPOS_C,
 )
 from semantica.analisador import AmbienteSemantico
 from sintatico.ast import ErroSintaxe, NoAST, formatar_ast
@@ -17,12 +17,10 @@ class AnalisadorSintatico:
         self.linguagem = linguagem
         self.ambiente = AmbienteSemantico(tabela, linguagem)
         self.modificadores = {
-            'c': MODIFICADORES_C, 'java': MODIFICADORES_JAVA,
-            None: MODIFICADORES_C | MODIFICADORES_JAVA,
+            'c': MODIFICADORES_C, None: MODIFICADORES_C,
         }[linguagem]
         self.tipos = {
-            'c': TIPOS_C, 'java': TIPOS_JAVA | {'String'},
-            None: TIPOS_C | TIPOS_JAVA | {'String'},
+            'c': TIPOS_C, None: TIPOS_C,
         }[linguagem]
         self._declaradores = {}
         self.arvore = NoAST('PROGRAMA', token=tokens[0] if tokens else None)
@@ -128,7 +126,7 @@ class AnalisadorSintatico:
                 ('double', 'long'): 'long double',
             }
             base = combinacoes.get(tuple(partes))
-            if not base or self.linguagem == 'java':
+            if not base:
                 raise ErroSintaxe(inicio, 'Combinação de tipos inválida: {}.'.format(' '.join(bases)))
         if sinais:
             if len(sinais) != 1 or alias or base not in {
@@ -136,17 +134,11 @@ class AnalisadorSintatico:
             }:
                 raise ErroSintaxe(inicio, 'Qualificador signed/unsigned incompatível com o tipo.')
             base = sinais[0] + ' ' + base
-        while self.atual() and self.atual().tipo == 'LBRACKET' and self.linguagem != 'c':
-            self.i += 1
-            self._exigir('RBRACKET', "Esperado ']' em tipo de array.")
-            base += '[]'
         return inicio, base, qualif
 
     def _nome_declarador(self, base, nome_opcional=False):
         ponteiros = 0
         while self.atual() and self.atual().tipo == 'TIMES':
-            if self.linguagem == 'java':
-                raise ErroSintaxe(self.atual(), 'Declarador de ponteiro fora da gramática Java.')
             ponteiros += 1
             self.i += 1
         nome = self.atual()
@@ -160,7 +152,7 @@ class AnalisadorSintatico:
             abertura = self.atual()
             self.i += 1
             tamanho = []
-            if self.linguagem != 'java' and self.atual() and self.atual().tipo in ('NUMBER', 'IDENTIFIER'):
+            if self.atual() and self.atual().tipo in ('NUMBER', 'IDENTIFIER'):
                 token = self.atual()
                 tamanho.append(NoAST('NUM' if token.tipo == 'NUMBER' else 'ID', token.lexema, token))
                 self.i += 1
@@ -177,7 +169,7 @@ class AnalisadorSintatico:
         if tok and tok.tipo == 'RPAREN':
             self.i += 1
             return [], False
-        if (self.linguagem != 'java' and tok and tok.tipo == 'VOID' and
+        if (tok and tok.tipo == 'VOID' and
                 self._olhar() and self._olhar().tipo == 'RPAREN'):
             self.i += 2
             return [], False
@@ -185,17 +177,13 @@ class AnalisadorSintatico:
         parametros = []
         while True:
             inicio, base, qualificadores = self._tipo()
-            variadico_java = self.linguagem == 'java' and self.atual() and self.atual().tipo == 'ELLIPSIS'
-            if variadico_java:
-                self.i += 1
-                base += '[]'
-            nome, tipo = self._nome_declarador(base, nome_opcional=self.linguagem != 'java')
+            nome, tipo = self._nome_declarador(base, nome_opcional=True)
             if tipo == 'void' or tipo.startswith('void[]'):
                 raise ErroSintaxe(nome or inicio, 'Parâmetro precisa ter um tipo diferente de void.')
             parametros.append((nome, tipo, 'final' in qualificadores))
-            if self.atual() and self.atual().tipo == 'COMMA' and not variadico_java:
+            if self.atual() and self.atual().tipo == 'COMMA':
                 self.i += 1
-                if (self.linguagem != 'java' and self.atual() and self.atual().tipo == 'ELLIPSIS'):
+                if (self.atual() and self.atual().tipo == 'ELLIPSIS'):
                     self.i += 1
                     self._exigir('RPAREN', "Esperado ')' após '...' na assinatura.")
                     return parametros, True
@@ -219,20 +207,6 @@ class AnalisadorSintatico:
             self.i += 1
         raise ErroSintaxe(self.tokens[-1], "Falta ')' no cabeçalho.")
 
-    def _adiar_corpo_java(self, metodos, parametros, funcao):
-        """Guarda o bloco para depois de cadastrar os campos da classe."""
-        inicio = self.i
-        profundidade = 0
-        while self.atual():
-            token = self.atual()
-            self.i += 1
-            if token.tipo == 'LBRACE':
-                profundidade += 1
-            elif token.tipo == 'RBRACE':
-                profundidade -= 1
-                if profundidade == 0:
-                    break
-        metodos.append((inicio, self.i, parametros, funcao))
 
     def _funcao(self, nome, tipo, metodos, qualificadores=()):
         parametros, variadico = self._parametros()
@@ -277,9 +251,7 @@ class AnalisadorSintatico:
         if excecoes:
             filhos.append(NoAST('THROWS', '', throws, excecoes))
         funcao = self._emitir(NoAST('FUNCAO' if definido else 'PROTOTIPO', nome.lexema, nome, filhos))
-        if definido and metodos is not None:
-            self._adiar_corpo_java(metodos, parametros, funcao)
-        elif definido:
+        if definido:
             with self._contexto_ast(funcao):
                 self._bloco(parametros=parametros, rotulo='funcao')
         else:
@@ -405,20 +377,9 @@ class AnalisadorSintatico:
                 self._erro(ErroSintaxe(abertura, "Faltam 1 chave(s) de fechamento '}'."))
             else:
                 self.i += 1
-            if metodos:
-                self._analisar_corpos_java(metodos)
         self.ambiente.tabela.sair_escopo()
         return bloco
 
-    def _analisar_corpos_java(self, metodos):
-        tokens, posicao = self.tokens, self.i
-        try:
-            for inicio, fim, parametros, funcao in metodos:
-                self.tokens, self.i = tokens[inicio:fim], 0
-                with self._contexto_ast(funcao):
-                    self._bloco(parametros=parametros, rotulo='funcao')
-        finally:
-            self.tokens, self.i = tokens, posicao
 
     def _controle(self):
         tok = self.atual()
@@ -468,7 +429,7 @@ class AnalisadorSintatico:
                 separadores.append(indice)
             elif tok.tipo == 'COLON' and nivel == 0:
                 dois_pontos.append(indice)
-        aprimorado = self.linguagem == 'java' and not separadores and len(dois_pontos) == 1
+        aprimorado = False
         no = self._emitir(NoAST('FOR_EACH' if aprimorado else 'FOR', token=inicio))
         inicializacao = NoAST('INICIALIZACAO', token=inicio)
         no.filhos.append(inicializacao)
@@ -549,25 +510,6 @@ class AnalisadorSintatico:
         if partes:
             self._emitir(NoAST('NAO_SUPORTADO', ' '.join(t.lexema for t in partes), partes[0]))
 
-    def _classe_java(self, qualificadores=()):
-        inicio = self.atual()
-        self.i += 1
-        nome = self._exigir('IDENTIFIER', 'Esperado nome após declaração de classe.')
-        inicio_cabecalho = self.i
-        while self.atual() and self.atual().tipo not in ('LBRACE', 'SEMICOLON', 'RBRACE'):
-            self.i += 1
-        if not self.atual() or self.atual().tipo != 'LBRACE':
-            raise ErroSintaxe(self.atual() or nome, "Esperado '{' após o cabeçalho da classe.")
-        self.ambiente.declarar(nome, nome.lexema, 'Classe')
-        no = self._emitir(NoAST('CLASSE' if inicio.tipo == 'CLASS' else 'INTERFACE', nome.lexema,
-                               inicio, [NoAST('ID', nome.lexema, nome)]))
-        if qualificadores:
-            no.filhos.insert(0, NoAST('MODIFICADORES', ' '.join(qualificadores), inicio))
-        cabecalho = self.tokens[inicio_cabecalho:self.i]
-        if cabecalho:
-            no.filhos.append(NoAST('HERANCA', ' '.join(t.lexema for t in cabecalho), cabecalho[0]))
-        with self._contexto_ast(no):
-            self._bloco(rotulo='classe')
 
     def _caso(self):
         tok = self.atual()
@@ -618,84 +560,9 @@ class AnalisadorSintatico:
         self._exigir('SEMICOLON', "Falta ';' após expressão.", retomar_instrucao=True)
         self._emitir(NoAST('INSTRUCAO_EXPRESSAO', token=tok, filhos=expressoes))
 
-    def _try(self):
-        tok = self.atual()
-        self.i += 1
-        no = self._emitir(NoAST('TRY', token=tok))
-        recursos = False
-        if self.atual() and self.atual().tipo == 'LPAREN':
-            partes = self._pular_parenteses()
-            no.filhos.append(NoAST('RECURSOS', ' '.join(t.lexema for t in partes), tok))
-            recursos = True
-        if not self.atual() or self.atual().tipo != 'LBRACE':
-            raise ErroSintaxe(self.atual() or tok, "Esperado bloco '{ ... }' após try.")
-        self._corpo(no)
-        tratados = 0
-        while self.atual() and self.atual().tipo == 'CATCH':
-            tratados += 1
-            captura = self.atual()
-            self.i += 1
-            partes = self._pular_parenteses()
-            if len(partes) < 2 or partes[-1].tipo != 'IDENTIFIER':
-                raise ErroSintaxe(captura, 'Esperado tipo e nome do parâmetro de catch.')
-            nome = partes[-1]
-            final = partes[0].tipo == 'FINAL'
-            tipo = ' '.join(t.lexema for t in partes[int(final):-1])
-            if not tipo:
-                raise ErroSintaxe(captura, 'Falta tipo do parâmetro de catch.')
-            parametro = NoAST('PARAMETRO', nome.lexema, nome,
-                              [NoAST('TIPO', tipo, partes[0]), NoAST('ID', nome.lexema, nome)])
-            caso = NoAST('CATCH', '', captura, [parametro])
-            no.filhos.append(caso)
-            with self._contexto_ast(caso):
-                self._bloco(parametros=[(nome, tipo, final)], rotulo='catch')
-        if self.atual() and self.atual().tipo == 'FINALLY':
-            tratados += 1
-            fim = self.atual()
-            self.i += 1
-            caso = NoAST('FINALLY', token=fim)
-            no.filhos.append(caso)
-            if not self.atual() or self.atual().tipo != 'LBRACE':
-                raise ErroSintaxe(self.atual() or fim, "Esperado bloco após finally.")
-            with self._contexto_ast(caso):
-                self._bloco()
-        if not tratados and not recursos:
-            raise ErroSintaxe(tok, 'Try requer catch ou finally.')
 
-    def _diretiva_java(self):
-        tok = self.atual()
-        self.i += 1
-        partes = []
-        while self.atual() and self.atual().tipo not in ('SEMICOLON', 'LBRACE', 'RBRACE'):
-            partes.append(self.atual())
-            self.i += 1
-        self._exigir('SEMICOLON', "Falta ';' após {}.".format(tok.lexema))
-        self._emitir(NoAST(tok.tipo, ' '.join(t.lexema for t in partes), tok))
 
-    def _anotacao(self):
-        tok = self.atual()
-        self.i += 1
-        nome = self._exigir('IDENTIFIER', 'Esperado nome da anotação.')
-        partes = [nome.lexema]
-        while self.atual() and self.atual().tipo == 'DOT':
-            self.i += 1
-            partes.append(self._exigir('IDENTIFIER', "Esperado identificador após '.'.").lexema)
-        filhos = []
-        if self.atual() and self.atual().tipo == 'LPAREN':
-            argumentos = self._expressao_trecho(self._pular_parenteses())
-            if argumentos is not None:
-                filhos.append(argumentos)
-        self._emitir(NoAST('ANOTACAO', '.'.join(partes), tok, filhos))
 
-    def _assert(self):
-        tok = self.atual()
-        self.i += 1
-        filhos = [self._parse_expressao()]
-        if self.atual() and self.atual().tipo == 'COLON':
-            self.i += 1
-            filhos.append(self._parse_expressao())
-        self._exigir('SEMICOLON', "Falta ';' após assert.")
-        self._emitir(NoAST('ASSERT', token=tok, filhos=filhos))
 
     def _include(self):
         marca = self._exigir('PUNCTUATOR', "Esperado '#' na diretiva.")
@@ -737,18 +604,10 @@ class AnalisadorSintatico:
             elif tok.tipo == 'TYPEDEF':
                 self.i += 1
                 self.declaracao(typedef=True)
-            elif tok.tipo in ('CLASS', 'INTERFACE') and self.linguagem != 'c':
-                self._classe_java()
-            elif tok.tipo == 'TRY':
-                self._try()
             elif tok.tipo in ('ELSE', 'CATCH', 'FINALLY'):
                 raise ErroSintaxe(tok, "'{}' sem construção correspondente.".format(tok.lexema))
             elif tok.tipo in ('RETURN', 'BREAK', 'CONTINUE', 'GOTO', 'THROW'):
                 self._salto()
-            elif tok.tipo in ('IMPORT', 'PACKAGE') and self.linguagem != 'c':
-                self._diretiva_java()
-            elif tok.tipo == 'ASSERT' and self.linguagem != 'c':
-                self._assert()
             elif tok.tipo == 'PUNCTUATOR' and tok.lexema in ('#', '%:'):
                 self._include()
             elif tok.tipo == 'PREPROCESSADOR':
@@ -760,7 +619,6 @@ class AnalisadorSintatico:
             elif tok.tipo == 'IDENTIFIER' and self._olhar() and self._olhar().tipo == 'ASSIGN':
                 self.atribuicao()
             elif tok.lexema in self.modificadores:
-                # Modificadores podem anteceder uma classe Java ou uma declaração.
                 j = self.i
                 while j < len(self.tokens) and self.tokens[j].lexema in self.modificadores:
                     j += 1
@@ -768,10 +626,6 @@ class AnalisadorSintatico:
                 if self._tipo_base(proximo) or any(
                         t.lexema in ('unsigned', 'signed') for t in self.tokens[self.i:j]):
                     self.declaracao(metodos=metodos)
-                elif proximo and proximo.tipo in ('CLASS', 'INTERFACE') and self.linguagem != 'c':
-                    modificadores = [t.lexema for t in self.tokens[self.i:j]]
-                    self.i = j
-                    self._classe_java(modificadores)
                 else:
                     self.i = j
             elif self._tipo_comeco(tok):
@@ -779,7 +633,7 @@ class AnalisadorSintatico:
             elif tok.tipo == 'AT':
                 self._anotacao()
             elif (tok.tipo == 'IDENTIFIER' and self._olhar() and self._olhar().tipo == 'IDENTIFIER'
-                  and self.linguagem != 'java'):
+):
                 raise ErroSintaxe(tok, f"Tipo '{tok.lexema}' não reconhecido neste escopo.")
             elif (tok.tipo == 'IDENTIFIER' and self._olhar() and self._olhar().tipo == 'COLON'):
                 self.i += 2

@@ -60,13 +60,6 @@ class TesteTokensInclude(unittest.TestCase):
         self.assertEqual([s['lexema'] for s in r['simbolos']], ['include', 'f'])
         self.assertEqual(next(p for p in r['palavras_reservadas'] if p['lexema'] == 'include')['ocorrencias'], 1)
 
-    def test_java_nao_reconhece_diretiva_c(self):
-        tokens, erros = tokenizar('int include=0;', 'java')
-        self.assertFalse(erros)
-        self.assertEqual(tokens[1].tipo, 'IDENTIFIER')
-        tokens, erros = tokenizar('#include <stdio.h>', 'java')
-        self.assertTrue(erros)
-        self.assertNotIn('HEADER_NAME', [t.tipo for t in tokens])
 
     def test_comparacoes_e_strings_fora_da_diretiva_mantem_suas_classes(self):
         tokens, erros = tokenizar('a < b > c; "<stdio.h>";', 'c')
