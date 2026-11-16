@@ -1,0 +1,157 @@
+================================================================================
+ANALISADOR AV3 - COMPILADORES | Fonte: exemplos/ast_completa.c
+================================================================================
+
+[2] TABELA DE SÍMBOLOS - ordem de inserção
+  N  Nome                 Categoria              Tipo declarado   Escopo                           Linha  Col
+--------------------------------------------------------------------------------------------------------------
+  1  soma                 Função                 int              global                               3    5
+  2  soma                 Função                 int              global                               5    5
+  3  a                    Parâmetro              int              global/funcao2                       5   14
+  4  b                    Parâmetro              int              global/funcao2                       5   21
+  5  main                 Função                 int              global                               9    5
+  6  total                Variável               int              global/funcao3                      10    9
+  7  i                    Variável               int              global/funcao3/for4                 11   14
+
+[3] ANÁLISE SINTÁTICA - AST DO PROGRAMA
+
+Árvore 1:
+Programa
+├── PREPROCESSADOR (#include <stdio.h>)
+│   ├── PUNCTUATOR (#)
+│   ├── KEYWORD (include)
+│   └── HEADER_NAME (<stdio.h>)
+├── Prototipo (soma)
+│   ├── TIPO (int)
+│   ├── ID (soma)
+│   └── PARAMETROS
+│       ├── PARAMETRO
+│       │   └── TIPO (int)
+│       └── PARAMETRO
+│           └── TIPO (int)
+├── Funcao (soma)
+│   ├── TIPO (int)
+│   ├── ID (soma)
+│   ├── PARAMETROS
+│   │   ├── PARAMETRO (a)
+│   │   │   ├── TIPO (int)
+│   │   │   └── ID (a)
+│   │   └── PARAMETRO (b)
+│   │       ├── TIPO (int)
+│   │       └── ID (b)
+│   └── Bloco
+│       └── RETURN
+│           └── Expressao (+)
+│               ├── ID (a)
+│               └── ID (b)
+└── Funcao (main)
+    ├── TIPO (int)
+    ├── ID (main)
+    ├── PARAMETROS
+    └── Bloco
+        ├── Declaracao
+        │   ├── TIPO (int)
+        │   ├── ID (total)
+        │   ├── OP_ATRIB (=)
+        │   └── NUM (0)
+        ├── FOR
+        │   ├── INICIALIZACAO
+        │   │   └── Declaracao
+        │   │       ├── TIPO (int)
+        │   │       ├── ID (i)
+        │   │       ├── OP_ATRIB (=)
+        │   │       └── NUM (0)
+        │   ├── CONDICAO
+        │   │   └── Expressao (<)
+        │   │       ├── ID (i)
+        │   │       └── NUM (3)
+        │   ├── ATUALIZACAO
+        │   │   └── POSFIXO (++)
+        │   │       └── ID (i)
+        │   └── CORPO
+        │       └── Bloco
+        │           └── IF
+        │               ├── CONDICAO
+        │               │   └── Expressao (==)
+        │               │       ├── Expressao (%)
+        │               │       │   ├── ID (i)
+        │               │       │   └── NUM (2)
+        │               │       └── NUM (0)
+        │               ├── ENTAO
+        │               │   └── Bloco
+        │               │       └── Atribuicao
+        │               │           ├── ID (total)
+        │               │           ├── OP_ATRIB (=)
+        │               │           └── Expressao (+)
+        │               │               ├── ID (total)
+        │               │               └── ID (i)
+        │               └── ELSE
+        │                   └── Bloco
+        │                       └── INSTRUCAO_EXPRESSAO
+        │                           └── ATRIBUICAO_EXPRESSAO (+=)
+        │                               ├── ID (total)
+        │                               └── NUM (1)
+        ├── WHILE
+        │   ├── CONDICAO
+        │   │   └── Expressao (<)
+        │   │       ├── ID (total)
+        │   │       └── NUM (5)
+        │   └── CORPO
+        │       └── Bloco
+        │           └── INSTRUCAO_EXPRESSAO
+        │               └── POSFIXO (++)
+        │                   └── ID (total)
+        ├── DO_WHILE
+        │   ├── CORPO
+        │   │   └── Bloco
+        │   │       └── INSTRUCAO_EXPRESSAO
+        │   │           └── POSFIXO (--)
+        │   │               └── ID (total)
+        │   └── CONDICAO
+        │       └── Expressao (>)
+        │           ├── ID (total)
+        │           └── NUM (3)
+        ├── SWITCH
+        │   ├── SELETOR
+        │   │   └── ID (total)
+        │   └── CORPO
+        │       └── Bloco
+        │           ├── CASE
+        │           │   ├── NUM (3)
+        │           │   ├── INSTRUCAO_EXPRESSAO
+        │           │   │   └── Chamada (printf)
+        │           │   │       ├── ID (printf)
+        │           │   │       └── ARGUMENTOS
+        │           │   │           ├── STRING ("total = %d\n")
+        │           │   │           └── ID (total)
+        │           │   └── BREAK
+        │           └── DEFAULT
+        │               ├── Atribuicao
+        │               │   ├── ID (total)
+        │               │   ├── OP_ATRIB (=)
+        │               │   └── NUM (0)
+        │               └── BREAK
+        ├── INSTRUCAO_EXPRESSAO
+        │   └── Chamada (printf)
+        │       ├── ID (printf)
+        │       └── ARGUMENTOS
+        │           ├── STRING ("soma = %d\n")
+        │           └── Chamada (soma)
+        │               ├── ID (soma)
+        │               └── ARGUMENTOS
+        │                   ├── ID (total)
+        │                   └── NUM (1)
+        └── RETURN
+            └── NUM (0)
+
+[4] DIAGNÓSTICOS LÉXICOS
+Nenhum diagnóstico nesta etapa.
+
+[5] DIAGNÓSTICOS SINTÁTICOS
+Nenhum diagnóstico nesta etapa.
+
+[6] ANÁLISE SEMÂNTICA - DIAGNÓSTICOS
+Nenhum diagnóstico nesta etapa.
+
+[7] RESUMO
+Tokens: 143 | Entradas na tabela: 7 | Declarações: 7 | ASTs: 1 | Erros: 0

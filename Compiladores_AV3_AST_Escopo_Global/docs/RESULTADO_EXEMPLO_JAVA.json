@@ -1,0 +1,724 @@
+{
+  "tokens": [
+    {
+      "tipo": "PUBLIC",
+      "lexema": "public",
+      "linha": 1,
+      "coluna": 1,
+      "ordem": 1
+    },
+    {
+      "tipo": "CLASS",
+      "lexema": "class",
+      "linha": 1,
+      "coluna": 8,
+      "ordem": 2
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "Exemplo",
+      "linha": 1,
+      "coluna": 14,
+      "ordem": 3
+    },
+    {
+      "tipo": "LBRACE",
+      "lexema": "{",
+      "linha": 1,
+      "coluna": 22,
+      "ordem": 4
+    },
+    {
+      "tipo": "PUBLIC",
+      "lexema": "public",
+      "linha": 2,
+      "coluna": 5,
+      "ordem": 5
+    },
+    {
+      "tipo": "STATIC",
+      "lexema": "static",
+      "linha": 2,
+      "coluna": 12,
+      "ordem": 6
+    },
+    {
+      "tipo": "VOID",
+      "lexema": "void",
+      "linha": 2,
+      "coluna": 19,
+      "ordem": 7
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "main",
+      "linha": 2,
+      "coluna": 24,
+      "ordem": 8
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 2,
+      "coluna": 28,
+      "ordem": 9
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "String",
+      "linha": 2,
+      "coluna": 29,
+      "ordem": 10
+    },
+    {
+      "tipo": "LBRACKET",
+      "lexema": "[",
+      "linha": 2,
+      "coluna": 35,
+      "ordem": 11
+    },
+    {
+      "tipo": "RBRACKET",
+      "lexema": "]",
+      "linha": 2,
+      "coluna": 36,
+      "ordem": 12
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "args",
+      "linha": 2,
+      "coluna": 38,
+      "ordem": 13
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 2,
+      "coluna": 42,
+      "ordem": 14
+    },
+    {
+      "tipo": "LBRACE",
+      "lexema": "{",
+      "linha": 2,
+      "coluna": 44,
+      "ordem": 15
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 3,
+      "coluna": 9,
+      "ordem": 16
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "a",
+      "linha": 3,
+      "coluna": 13,
+      "ordem": 17
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 3,
+      "coluna": 15,
+      "ordem": 18
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "2",
+      "linha": 3,
+      "coluna": 17,
+      "ordem": 19
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 3,
+      "coluna": 18,
+      "ordem": 20
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 4,
+      "coluna": 9,
+      "ordem": 21
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 4,
+      "coluna": 13,
+      "ordem": 22
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 4,
+      "coluna": 19,
+      "ordem": 23
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "a",
+      "linha": 4,
+      "coluna": 21,
+      "ordem": 24
+    },
+    {
+      "tipo": "PLUS",
+      "lexema": "+",
+      "linha": 4,
+      "coluna": 23,
+      "ordem": 25
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "5",
+      "linha": 4,
+      "coluna": 25,
+      "ordem": 26
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 4,
+      "coluna": 26,
+      "ordem": 27
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "String",
+      "linha": 5,
+      "coluna": 9,
+      "ordem": 28
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "saudacao",
+      "linha": 5,
+      "coluna": 16,
+      "ordem": 29
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 5,
+      "coluna": 25,
+      "ordem": 30
+    },
+    {
+      "tipo": "STRING",
+      "lexema": "\"Ola\"",
+      "linha": 5,
+      "coluna": 27,
+      "ordem": 31
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 5,
+      "coluna": 32,
+      "ordem": 32
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 6,
+      "coluna": 9,
+      "ordem": 33
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 6,
+      "coluna": 15,
+      "ordem": 34
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 6,
+      "coluna": 17,
+      "ordem": 35
+    },
+    {
+      "tipo": "TIMES",
+      "lexema": "*",
+      "linha": 6,
+      "coluna": 23,
+      "ordem": 36
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "2",
+      "linha": 6,
+      "coluna": 25,
+      "ordem": 37
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 6,
+      "coluna": 26,
+      "ordem": 38
+    },
+    {
+      "tipo": "RBRACE",
+      "lexema": "}",
+      "linha": 7,
+      "coluna": 5,
+      "ordem": 39
+    },
+    {
+      "tipo": "RBRACE",
+      "lexema": "}",
+      "linha": 8,
+      "coluna": 1,
+      "ordem": 40
+    }
+  ],
+  "tabela_simbolos": [
+    {
+      "ordem": 1,
+      "lexema": "Exemplo",
+      "categoria": "Classe",
+      "tipo_declarado": "Exemplo",
+      "escopo": "global",
+      "linha": 1,
+      "coluna": 14
+    },
+    {
+      "ordem": 2,
+      "lexema": "main",
+      "categoria": "Função",
+      "tipo_declarado": "void",
+      "escopo": "global/classe1",
+      "linha": 2,
+      "coluna": 24
+    },
+    {
+      "ordem": 3,
+      "lexema": "args",
+      "categoria": "Parâmetro",
+      "tipo_declarado": "String[]",
+      "escopo": "global/classe1/funcao2",
+      "linha": 2,
+      "coluna": 38
+    },
+    {
+      "ordem": 4,
+      "lexema": "a",
+      "categoria": "Variável",
+      "tipo_declarado": "int",
+      "escopo": "global/classe1/funcao2",
+      "linha": 3,
+      "coluna": 13
+    },
+    {
+      "ordem": 5,
+      "lexema": "total",
+      "categoria": "Variável",
+      "tipo_declarado": "int",
+      "escopo": "global/classe1/funcao2",
+      "linha": 4,
+      "coluna": 13
+    },
+    {
+      "ordem": 6,
+      "lexema": "saudacao",
+      "categoria": "Variável",
+      "tipo_declarado": "String",
+      "escopo": "global/classe1/funcao2",
+      "linha": 5,
+      "coluna": 16
+    }
+  ],
+  "simbolos": [
+    {
+      "ordem": 1,
+      "lexema": "Exemplo",
+      "categoria": "Classe",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "Exemplo",
+      "escopo": "global",
+      "linha": 1,
+      "coluna": 14
+    },
+    {
+      "ordem": 2,
+      "lexema": "main",
+      "categoria": "Função",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "void",
+      "escopo": "global/classe1",
+      "linha": 2,
+      "coluna": 24
+    },
+    {
+      "ordem": 3,
+      "lexema": "args",
+      "categoria": "Parâmetro",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "String[]",
+      "escopo": "global/classe1/funcao2",
+      "linha": 2,
+      "coluna": 38
+    },
+    {
+      "ordem": 4,
+      "lexema": "a",
+      "categoria": "Variável",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "int",
+      "escopo": "global/classe1/funcao2",
+      "linha": 3,
+      "coluna": 13
+    },
+    {
+      "ordem": 5,
+      "lexema": "total",
+      "categoria": "Variável",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "int",
+      "escopo": "global/classe1/funcao2",
+      "linha": 4,
+      "coluna": 13
+    },
+    {
+      "ordem": 6,
+      "lexema": "saudacao",
+      "categoria": "Variável",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "String",
+      "escopo": "global/classe1/funcao2",
+      "linha": 5,
+      "coluna": 16
+    }
+  ],
+  "palavras_reservadas": [
+    {
+      "ordem": 1,
+      "lexema": "public",
+      "token": "PUBLIC",
+      "linha": 1,
+      "coluna": 1,
+      "ocorrencias": 2
+    },
+    {
+      "ordem": 2,
+      "lexema": "class",
+      "token": "CLASS",
+      "linha": 1,
+      "coluna": 8,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 3,
+      "lexema": "static",
+      "token": "STATIC",
+      "linha": 2,
+      "coluna": 12,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 4,
+      "lexema": "void",
+      "token": "VOID",
+      "linha": 2,
+      "coluna": 19,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 5,
+      "lexema": "int",
+      "token": "INT",
+      "linha": 3,
+      "coluna": 9,
+      "ocorrencias": 2
+    }
+  ],
+  "ast": [
+    "Programa\n└── Classe (Exemplo)\n    ├── MODIFICADORES (public)\n    ├── ID (Exemplo)\n    └── Bloco\n        └── Funcao (main)\n            ├── MODIFICADORES (public static)\n            ├── TIPO (void)\n            ├── ID (main)\n            ├── PARAMETROS\n            │   └── PARAMETRO (args)\n            │       ├── TIPO (String[])\n            │       └── ID (args)\n            └── Bloco\n                ├── Declaracao\n                │   ├── TIPO (int)\n                │   ├── ID (a)\n                │   ├── OP_ATRIB (=)\n                │   └── NUM (2)\n                ├── Declaracao\n                │   ├── TIPO (int)\n                │   ├── ID (total)\n                │   ├── OP_ATRIB (=)\n                │   └── Expressao (+)\n                │       ├── ID (a)\n                │       └── NUM (5)\n                ├── Declaracao\n                │   ├── TIPO (String)\n                │   ├── ID (saudacao)\n                │   ├── OP_ATRIB (=)\n                │   └── STRING (\"Ola\")\n                └── Atribuicao\n                    ├── ID (total)\n                    ├── OP_ATRIB (=)\n                    └── Expressao (*)\n                        ├── ID (total)\n                        └── NUM (2)"
+  ],
+  "ast_estruturada": {
+    "classe": "PROGRAMA",
+    "valor": "",
+    "linha": 1,
+    "coluna": 1,
+    "filhos": [
+      {
+        "classe": "CLASSE",
+        "valor": "Exemplo",
+        "linha": 1,
+        "coluna": 8,
+        "filhos": [
+          {
+            "classe": "MODIFICADORES",
+            "valor": "public",
+            "linha": 1,
+            "coluna": 8,
+            "filhos": []
+          },
+          {
+            "classe": "ID",
+            "valor": "Exemplo",
+            "linha": 1,
+            "coluna": 14,
+            "filhos": []
+          },
+          {
+            "classe": "BLOCO",
+            "valor": "",
+            "linha": 1,
+            "coluna": 22,
+            "filhos": [
+              {
+                "classe": "FUNCAO",
+                "valor": "main",
+                "linha": 2,
+                "coluna": 24,
+                "filhos": [
+                  {
+                    "classe": "MODIFICADORES",
+                    "valor": "public static",
+                    "linha": 2,
+                    "coluna": 24,
+                    "filhos": []
+                  },
+                  {
+                    "classe": "TIPO",
+                    "valor": "void",
+                    "linha": 2,
+                    "coluna": 24,
+                    "filhos": []
+                  },
+                  {
+                    "classe": "ID",
+                    "valor": "main",
+                    "linha": 2,
+                    "coluna": 24,
+                    "filhos": []
+                  },
+                  {
+                    "classe": "PARAMETROS",
+                    "valor": "",
+                    "linha": 2,
+                    "coluna": 24,
+                    "filhos": [
+                      {
+                        "classe": "PARAMETRO",
+                        "valor": "args",
+                        "linha": 2,
+                        "coluna": 38,
+                        "filhos": [
+                          {
+                            "classe": "TIPO",
+                            "valor": "String[]",
+                            "linha": 2,
+                            "coluna": 38,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "ID",
+                            "valor": "args",
+                            "linha": 2,
+                            "coluna": 38,
+                            "filhos": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "classe": "BLOCO",
+                    "valor": "",
+                    "linha": 2,
+                    "coluna": 44,
+                    "filhos": [
+                      {
+                        "classe": "DECLARACAO",
+                        "valor": "",
+                        "linha": 3,
+                        "coluna": 13,
+                        "filhos": [
+                          {
+                            "classe": "TIPO",
+                            "valor": "int",
+                            "linha": 3,
+                            "coluna": 9,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "ID",
+                            "valor": "a",
+                            "linha": 3,
+                            "coluna": 13,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "ATRIB",
+                            "valor": "=",
+                            "linha": 3,
+                            "coluna": 15,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "NUM",
+                            "valor": "2",
+                            "linha": 3,
+                            "coluna": 17,
+                            "filhos": []
+                          }
+                        ]
+                      },
+                      {
+                        "classe": "DECLARACAO",
+                        "valor": "",
+                        "linha": 4,
+                        "coluna": 13,
+                        "filhos": [
+                          {
+                            "classe": "TIPO",
+                            "valor": "int",
+                            "linha": 4,
+                            "coluna": 9,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "ID",
+                            "valor": "total",
+                            "linha": 4,
+                            "coluna": 13,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "ATRIB",
+                            "valor": "=",
+                            "linha": 4,
+                            "coluna": 19,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "OP",
+                            "valor": "+",
+                            "linha": 4,
+                            "coluna": 23,
+                            "filhos": [
+                              {
+                                "classe": "ID",
+                                "valor": "a",
+                                "linha": 4,
+                                "coluna": 21,
+                                "filhos": []
+                              },
+                              {
+                                "classe": "NUM",
+                                "valor": "5",
+                                "linha": 4,
+                                "coluna": 25,
+                                "filhos": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "classe": "DECLARACAO",
+                        "valor": "",
+                        "linha": 5,
+                        "coluna": 16,
+                        "filhos": [
+                          {
+                            "classe": "TIPO",
+                            "valor": "String",
+                            "linha": 5,
+                            "coluna": 9,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "ID",
+                            "valor": "saudacao",
+                            "linha": 5,
+                            "coluna": 16,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "ATRIB",
+                            "valor": "=",
+                            "linha": 5,
+                            "coluna": 25,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "STRING",
+                            "valor": "\"Ola\"",
+                            "linha": 5,
+                            "coluna": 27,
+                            "filhos": []
+                          }
+                        ]
+                      },
+                      {
+                        "classe": "ATRIBUICAO",
+                        "valor": "",
+                        "linha": 6,
+                        "coluna": 9,
+                        "filhos": [
+                          {
+                            "classe": "ID",
+                            "valor": "total",
+                            "linha": 6,
+                            "coluna": 9,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "ATRIB",
+                            "valor": "=",
+                            "linha": 6,
+                            "coluna": 15,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "OP",
+                            "valor": "*",
+                            "linha": 6,
+                            "coluna": 23,
+                            "filhos": [
+                              {
+                                "classe": "ID",
+                                "valor": "total",
+                                "linha": 6,
+                                "coluna": 17,
+                                "filhos": []
+                              },
+                              {
+                                "classe": "NUM",
+                                "valor": "2",
+                                "linha": 6,
+                                "coluna": 25,
+                                "filhos": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "erros_lexicos": [],
+  "erros_sintaticos": [],
+  "erros_semanticos": [],
+  "observacao": "AST hierárquica das construções reconhecidas, com validação do contexto: declarações são permitidas no escopo global; instruções executáveis devem estar dentro de funções. A validação semântica é didática. Não há geração de código executável.",
+  "tokens_fora_do_escopo": 0
+}

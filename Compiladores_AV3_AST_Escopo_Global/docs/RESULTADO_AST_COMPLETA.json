@@ -1,0 +1,2212 @@
+{
+  "tokens": [
+    {
+      "tipo": "PUNCTUATOR",
+      "lexema": "#",
+      "linha": 1,
+      "coluna": 1,
+      "ordem": 1
+    },
+    {
+      "tipo": "KEYWORD",
+      "lexema": "include",
+      "linha": 1,
+      "coluna": 2,
+      "ordem": 2
+    },
+    {
+      "tipo": "HEADER_NAME",
+      "lexema": "<stdio.h>",
+      "linha": 1,
+      "coluna": 10,
+      "ordem": 3
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 3,
+      "coluna": 1,
+      "ordem": 4
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "soma",
+      "linha": 3,
+      "coluna": 5,
+      "ordem": 5
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 3,
+      "coluna": 9,
+      "ordem": 6
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 3,
+      "coluna": 10,
+      "ordem": 7
+    },
+    {
+      "tipo": "COMMA",
+      "lexema": ",",
+      "linha": 3,
+      "coluna": 13,
+      "ordem": 8
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 3,
+      "coluna": 15,
+      "ordem": 9
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 3,
+      "coluna": 18,
+      "ordem": 10
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 3,
+      "coluna": 19,
+      "ordem": 11
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 5,
+      "coluna": 1,
+      "ordem": 12
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "soma",
+      "linha": 5,
+      "coluna": 5,
+      "ordem": 13
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 5,
+      "coluna": 9,
+      "ordem": 14
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 5,
+      "coluna": 10,
+      "ordem": 15
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "a",
+      "linha": 5,
+      "coluna": 14,
+      "ordem": 16
+    },
+    {
+      "tipo": "COMMA",
+      "lexema": ",",
+      "linha": 5,
+      "coluna": 15,
+      "ordem": 17
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 5,
+      "coluna": 17,
+      "ordem": 18
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "b",
+      "linha": 5,
+      "coluna": 21,
+      "ordem": 19
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 5,
+      "coluna": 22,
+      "ordem": 20
+    },
+    {
+      "tipo": "LBRACE",
+      "lexema": "{",
+      "linha": 5,
+      "coluna": 24,
+      "ordem": 21
+    },
+    {
+      "tipo": "RETURN",
+      "lexema": "return",
+      "linha": 6,
+      "coluna": 5,
+      "ordem": 22
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "a",
+      "linha": 6,
+      "coluna": 12,
+      "ordem": 23
+    },
+    {
+      "tipo": "PLUS",
+      "lexema": "+",
+      "linha": 6,
+      "coluna": 14,
+      "ordem": 24
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "b",
+      "linha": 6,
+      "coluna": 16,
+      "ordem": 25
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 6,
+      "coluna": 17,
+      "ordem": 26
+    },
+    {
+      "tipo": "RBRACE",
+      "lexema": "}",
+      "linha": 7,
+      "coluna": 1,
+      "ordem": 27
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 9,
+      "coluna": 1,
+      "ordem": 28
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "main",
+      "linha": 9,
+      "coluna": 5,
+      "ordem": 29
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 9,
+      "coluna": 9,
+      "ordem": 30
+    },
+    {
+      "tipo": "VOID",
+      "lexema": "void",
+      "linha": 9,
+      "coluna": 10,
+      "ordem": 31
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 9,
+      "coluna": 14,
+      "ordem": 32
+    },
+    {
+      "tipo": "LBRACE",
+      "lexema": "{",
+      "linha": 9,
+      "coluna": 16,
+      "ordem": 33
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 10,
+      "coluna": 5,
+      "ordem": 34
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 10,
+      "coluna": 9,
+      "ordem": 35
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 10,
+      "coluna": 15,
+      "ordem": 36
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "0",
+      "linha": 10,
+      "coluna": 17,
+      "ordem": 37
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 10,
+      "coluna": 18,
+      "ordem": 38
+    },
+    {
+      "tipo": "FOR",
+      "lexema": "for",
+      "linha": 11,
+      "coluna": 5,
+      "ordem": 39
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 11,
+      "coluna": 9,
+      "ordem": 40
+    },
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 11,
+      "coluna": 10,
+      "ordem": 41
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "i",
+      "linha": 11,
+      "coluna": 14,
+      "ordem": 42
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 11,
+      "coluna": 16,
+      "ordem": 43
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "0",
+      "linha": 11,
+      "coluna": 18,
+      "ordem": 44
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 11,
+      "coluna": 19,
+      "ordem": 45
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "i",
+      "linha": 11,
+      "coluna": 21,
+      "ordem": 46
+    },
+    {
+      "tipo": "LT",
+      "lexema": "<",
+      "linha": 11,
+      "coluna": 23,
+      "ordem": 47
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "3",
+      "linha": 11,
+      "coluna": 25,
+      "ordem": 48
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 11,
+      "coluna": 26,
+      "ordem": 49
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "i",
+      "linha": 11,
+      "coluna": 28,
+      "ordem": 50
+    },
+    {
+      "tipo": "INCREMENT",
+      "lexema": "++",
+      "linha": 11,
+      "coluna": 29,
+      "ordem": 51
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 11,
+      "coluna": 31,
+      "ordem": 52
+    },
+    {
+      "tipo": "LBRACE",
+      "lexema": "{",
+      "linha": 11,
+      "coluna": 33,
+      "ordem": 53
+    },
+    {
+      "tipo": "IF",
+      "lexema": "if",
+      "linha": 12,
+      "coluna": 9,
+      "ordem": 54
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 12,
+      "coluna": 12,
+      "ordem": 55
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "i",
+      "linha": 12,
+      "coluna": 13,
+      "ordem": 56
+    },
+    {
+      "tipo": "MOD",
+      "lexema": "%",
+      "linha": 12,
+      "coluna": 15,
+      "ordem": 57
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "2",
+      "linha": 12,
+      "coluna": 17,
+      "ordem": 58
+    },
+    {
+      "tipo": "EQ",
+      "lexema": "==",
+      "linha": 12,
+      "coluna": 19,
+      "ordem": 59
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "0",
+      "linha": 12,
+      "coluna": 22,
+      "ordem": 60
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 12,
+      "coluna": 23,
+      "ordem": 61
+    },
+    {
+      "tipo": "LBRACE",
+      "lexema": "{",
+      "linha": 12,
+      "coluna": 25,
+      "ordem": 62
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 13,
+      "coluna": 13,
+      "ordem": 63
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 13,
+      "coluna": 19,
+      "ordem": 64
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 13,
+      "coluna": 21,
+      "ordem": 65
+    },
+    {
+      "tipo": "PLUS",
+      "lexema": "+",
+      "linha": 13,
+      "coluna": 27,
+      "ordem": 66
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "i",
+      "linha": 13,
+      "coluna": 29,
+      "ordem": 67
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 13,
+      "coluna": 30,
+      "ordem": 68
+    },
+    {
+      "tipo": "RBRACE",
+      "lexema": "}",
+      "linha": 14,
+      "coluna": 9,
+      "ordem": 69
+    },
+    {
+      "tipo": "ELSE",
+      "lexema": "else",
+      "linha": 14,
+      "coluna": 11,
+      "ordem": 70
+    },
+    {
+      "tipo": "LBRACE",
+      "lexema": "{",
+      "linha": 14,
+      "coluna": 16,
+      "ordem": 71
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 15,
+      "coluna": 13,
+      "ordem": 72
+    },
+    {
+      "tipo": "PLUS_ASSIGN",
+      "lexema": "+=",
+      "linha": 15,
+      "coluna": 19,
+      "ordem": 73
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "1",
+      "linha": 15,
+      "coluna": 22,
+      "ordem": 74
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 15,
+      "coluna": 23,
+      "ordem": 75
+    },
+    {
+      "tipo": "RBRACE",
+      "lexema": "}",
+      "linha": 16,
+      "coluna": 9,
+      "ordem": 76
+    },
+    {
+      "tipo": "RBRACE",
+      "lexema": "}",
+      "linha": 17,
+      "coluna": 5,
+      "ordem": 77
+    },
+    {
+      "tipo": "WHILE",
+      "lexema": "while",
+      "linha": 18,
+      "coluna": 5,
+      "ordem": 78
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 18,
+      "coluna": 11,
+      "ordem": 79
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 18,
+      "coluna": 12,
+      "ordem": 80
+    },
+    {
+      "tipo": "LT",
+      "lexema": "<",
+      "linha": 18,
+      "coluna": 18,
+      "ordem": 81
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "5",
+      "linha": 18,
+      "coluna": 20,
+      "ordem": 82
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 18,
+      "coluna": 21,
+      "ordem": 83
+    },
+    {
+      "tipo": "LBRACE",
+      "lexema": "{",
+      "linha": 18,
+      "coluna": 23,
+      "ordem": 84
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 19,
+      "coluna": 9,
+      "ordem": 85
+    },
+    {
+      "tipo": "INCREMENT",
+      "lexema": "++",
+      "linha": 19,
+      "coluna": 14,
+      "ordem": 86
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 19,
+      "coluna": 16,
+      "ordem": 87
+    },
+    {
+      "tipo": "RBRACE",
+      "lexema": "}",
+      "linha": 20,
+      "coluna": 5,
+      "ordem": 88
+    },
+    {
+      "tipo": "DO",
+      "lexema": "do",
+      "linha": 21,
+      "coluna": 5,
+      "ordem": 89
+    },
+    {
+      "tipo": "LBRACE",
+      "lexema": "{",
+      "linha": 21,
+      "coluna": 8,
+      "ordem": 90
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 22,
+      "coluna": 9,
+      "ordem": 91
+    },
+    {
+      "tipo": "DECREMENT",
+      "lexema": "--",
+      "linha": 22,
+      "coluna": 14,
+      "ordem": 92
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 22,
+      "coluna": 16,
+      "ordem": 93
+    },
+    {
+      "tipo": "RBRACE",
+      "lexema": "}",
+      "linha": 23,
+      "coluna": 5,
+      "ordem": 94
+    },
+    {
+      "tipo": "WHILE",
+      "lexema": "while",
+      "linha": 23,
+      "coluna": 7,
+      "ordem": 95
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 23,
+      "coluna": 13,
+      "ordem": 96
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 23,
+      "coluna": 14,
+      "ordem": 97
+    },
+    {
+      "tipo": "GT",
+      "lexema": ">",
+      "linha": 23,
+      "coluna": 20,
+      "ordem": 98
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "3",
+      "linha": 23,
+      "coluna": 22,
+      "ordem": 99
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 23,
+      "coluna": 23,
+      "ordem": 100
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 23,
+      "coluna": 24,
+      "ordem": 101
+    },
+    {
+      "tipo": "SWITCH",
+      "lexema": "switch",
+      "linha": 24,
+      "coluna": 5,
+      "ordem": 102
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 24,
+      "coluna": 12,
+      "ordem": 103
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 24,
+      "coluna": 13,
+      "ordem": 104
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 24,
+      "coluna": 18,
+      "ordem": 105
+    },
+    {
+      "tipo": "LBRACE",
+      "lexema": "{",
+      "linha": 24,
+      "coluna": 20,
+      "ordem": 106
+    },
+    {
+      "tipo": "CASE",
+      "lexema": "case",
+      "linha": 25,
+      "coluna": 9,
+      "ordem": 107
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "3",
+      "linha": 25,
+      "coluna": 14,
+      "ordem": 108
+    },
+    {
+      "tipo": "COLON",
+      "lexema": ":",
+      "linha": 25,
+      "coluna": 15,
+      "ordem": 109
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "printf",
+      "linha": 26,
+      "coluna": 13,
+      "ordem": 110
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 26,
+      "coluna": 19,
+      "ordem": 111
+    },
+    {
+      "tipo": "STRING",
+      "lexema": "\"total = %d\\n\"",
+      "linha": 26,
+      "coluna": 20,
+      "ordem": 112
+    },
+    {
+      "tipo": "COMMA",
+      "lexema": ",",
+      "linha": 26,
+      "coluna": 34,
+      "ordem": 113
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 26,
+      "coluna": 36,
+      "ordem": 114
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 26,
+      "coluna": 41,
+      "ordem": 115
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 26,
+      "coluna": 42,
+      "ordem": 116
+    },
+    {
+      "tipo": "BREAK",
+      "lexema": "break",
+      "linha": 27,
+      "coluna": 13,
+      "ordem": 117
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 27,
+      "coluna": 18,
+      "ordem": 118
+    },
+    {
+      "tipo": "DEFAULT",
+      "lexema": "default",
+      "linha": 28,
+      "coluna": 9,
+      "ordem": 119
+    },
+    {
+      "tipo": "COLON",
+      "lexema": ":",
+      "linha": 28,
+      "coluna": 16,
+      "ordem": 120
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 29,
+      "coluna": 13,
+      "ordem": 121
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 29,
+      "coluna": 19,
+      "ordem": 122
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "0",
+      "linha": 29,
+      "coluna": 21,
+      "ordem": 123
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 29,
+      "coluna": 22,
+      "ordem": 124
+    },
+    {
+      "tipo": "BREAK",
+      "lexema": "break",
+      "linha": 30,
+      "coluna": 13,
+      "ordem": 125
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 30,
+      "coluna": 18,
+      "ordem": 126
+    },
+    {
+      "tipo": "RBRACE",
+      "lexema": "}",
+      "linha": 31,
+      "coluna": 5,
+      "ordem": 127
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "printf",
+      "linha": 32,
+      "coluna": 5,
+      "ordem": 128
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 32,
+      "coluna": 11,
+      "ordem": 129
+    },
+    {
+      "tipo": "STRING",
+      "lexema": "\"soma = %d\\n\"",
+      "linha": 32,
+      "coluna": 12,
+      "ordem": 130
+    },
+    {
+      "tipo": "COMMA",
+      "lexema": ",",
+      "linha": 32,
+      "coluna": 25,
+      "ordem": 131
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "soma",
+      "linha": 32,
+      "coluna": 27,
+      "ordem": 132
+    },
+    {
+      "tipo": "LPAREN",
+      "lexema": "(",
+      "linha": 32,
+      "coluna": 31,
+      "ordem": 133
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "total",
+      "linha": 32,
+      "coluna": 32,
+      "ordem": 134
+    },
+    {
+      "tipo": "COMMA",
+      "lexema": ",",
+      "linha": 32,
+      "coluna": 37,
+      "ordem": 135
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "1",
+      "linha": 32,
+      "coluna": 39,
+      "ordem": 136
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 32,
+      "coluna": 40,
+      "ordem": 137
+    },
+    {
+      "tipo": "RPAREN",
+      "lexema": ")",
+      "linha": 32,
+      "coluna": 41,
+      "ordem": 138
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 32,
+      "coluna": 42,
+      "ordem": 139
+    },
+    {
+      "tipo": "RETURN",
+      "lexema": "return",
+      "linha": 33,
+      "coluna": 5,
+      "ordem": 140
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "0",
+      "linha": 33,
+      "coluna": 12,
+      "ordem": 141
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 33,
+      "coluna": 13,
+      "ordem": 142
+    },
+    {
+      "tipo": "RBRACE",
+      "lexema": "}",
+      "linha": 34,
+      "coluna": 1,
+      "ordem": 143
+    }
+  ],
+  "tabela_simbolos": [
+    {
+      "ordem": 1,
+      "lexema": "soma",
+      "categoria": "Função",
+      "tipo_declarado": "int",
+      "escopo": "global",
+      "linha": 3,
+      "coluna": 5
+    },
+    {
+      "ordem": 2,
+      "lexema": "soma",
+      "categoria": "Função",
+      "tipo_declarado": "int",
+      "escopo": "global",
+      "linha": 5,
+      "coluna": 5
+    },
+    {
+      "ordem": 3,
+      "lexema": "a",
+      "categoria": "Parâmetro",
+      "tipo_declarado": "int",
+      "escopo": "global/funcao2",
+      "linha": 5,
+      "coluna": 14
+    },
+    {
+      "ordem": 4,
+      "lexema": "b",
+      "categoria": "Parâmetro",
+      "tipo_declarado": "int",
+      "escopo": "global/funcao2",
+      "linha": 5,
+      "coluna": 21
+    },
+    {
+      "ordem": 5,
+      "lexema": "main",
+      "categoria": "Função",
+      "tipo_declarado": "int",
+      "escopo": "global",
+      "linha": 9,
+      "coluna": 5
+    },
+    {
+      "ordem": 6,
+      "lexema": "total",
+      "categoria": "Variável",
+      "tipo_declarado": "int",
+      "escopo": "global/funcao3",
+      "linha": 10,
+      "coluna": 9
+    },
+    {
+      "ordem": 7,
+      "lexema": "i",
+      "categoria": "Variável",
+      "tipo_declarado": "int",
+      "escopo": "global/funcao3/for4",
+      "linha": 11,
+      "coluna": 14
+    }
+  ],
+  "simbolos": [
+    {
+      "ordem": 1,
+      "lexema": "soma",
+      "categoria": "Função",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "int",
+      "escopo": "global",
+      "linha": 3,
+      "coluna": 5
+    },
+    {
+      "ordem": 2,
+      "lexema": "soma",
+      "categoria": "Função",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "int",
+      "escopo": "global",
+      "linha": 5,
+      "coluna": 5
+    },
+    {
+      "ordem": 3,
+      "lexema": "a",
+      "categoria": "Parâmetro",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "int",
+      "escopo": "global/funcao2",
+      "linha": 5,
+      "coluna": 14
+    },
+    {
+      "ordem": 4,
+      "lexema": "b",
+      "categoria": "Parâmetro",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "int",
+      "escopo": "global/funcao2",
+      "linha": 5,
+      "coluna": 21
+    },
+    {
+      "ordem": 5,
+      "lexema": "main",
+      "categoria": "Função",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "int",
+      "escopo": "global",
+      "linha": 9,
+      "coluna": 5
+    },
+    {
+      "ordem": 6,
+      "lexema": "total",
+      "categoria": "Variável",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "int",
+      "escopo": "global/funcao3",
+      "linha": 10,
+      "coluna": 9
+    },
+    {
+      "ordem": 7,
+      "lexema": "i",
+      "categoria": "Variável",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "int",
+      "escopo": "global/funcao3/for4",
+      "linha": 11,
+      "coluna": 14
+    }
+  ],
+  "palavras_reservadas": [
+    {
+      "ordem": 1,
+      "lexema": "include",
+      "token": "KEYWORD",
+      "linha": 1,
+      "coluna": 2,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 2,
+      "lexema": "int",
+      "token": "INT",
+      "linha": 3,
+      "coluna": 1,
+      "ocorrencias": 9
+    },
+    {
+      "ordem": 3,
+      "lexema": "return",
+      "token": "RETURN",
+      "linha": 6,
+      "coluna": 5,
+      "ocorrencias": 2
+    },
+    {
+      "ordem": 4,
+      "lexema": "void",
+      "token": "VOID",
+      "linha": 9,
+      "coluna": 10,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 5,
+      "lexema": "for",
+      "token": "FOR",
+      "linha": 11,
+      "coluna": 5,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 6,
+      "lexema": "if",
+      "token": "IF",
+      "linha": 12,
+      "coluna": 9,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 7,
+      "lexema": "else",
+      "token": "ELSE",
+      "linha": 14,
+      "coluna": 11,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 8,
+      "lexema": "while",
+      "token": "WHILE",
+      "linha": 18,
+      "coluna": 5,
+      "ocorrencias": 2
+    },
+    {
+      "ordem": 9,
+      "lexema": "do",
+      "token": "DO",
+      "linha": 21,
+      "coluna": 5,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 10,
+      "lexema": "switch",
+      "token": "SWITCH",
+      "linha": 24,
+      "coluna": 5,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 11,
+      "lexema": "case",
+      "token": "CASE",
+      "linha": 25,
+      "coluna": 9,
+      "ocorrencias": 1
+    },
+    {
+      "ordem": 12,
+      "lexema": "break",
+      "token": "BREAK",
+      "linha": 27,
+      "coluna": 13,
+      "ocorrencias": 2
+    },
+    {
+      "ordem": 13,
+      "lexema": "default",
+      "token": "DEFAULT",
+      "linha": 28,
+      "coluna": 9,
+      "ocorrencias": 1
+    }
+  ],
+  "ast": [
+    "Programa\n├── PREPROCESSADOR (#include <stdio.h>)\n│   ├── PUNCTUATOR (#)\n│   ├── KEYWORD (include)\n│   └── HEADER_NAME (<stdio.h>)\n├── Prototipo (soma)\n│   ├── TIPO (int)\n│   ├── ID (soma)\n│   └── PARAMETROS\n│       ├── PARAMETRO\n│       │   └── TIPO (int)\n│       └── PARAMETRO\n│           └── TIPO (int)\n├── Funcao (soma)\n│   ├── TIPO (int)\n│   ├── ID (soma)\n│   ├── PARAMETROS\n│   │   ├── PARAMETRO (a)\n│   │   │   ├── TIPO (int)\n│   │   │   └── ID (a)\n│   │   └── PARAMETRO (b)\n│   │       ├── TIPO (int)\n│   │       └── ID (b)\n│   └── Bloco\n│       └── RETURN\n│           └── Expressao (+)\n│               ├── ID (a)\n│               └── ID (b)\n└── Funcao (main)\n    ├── TIPO (int)\n    ├── ID (main)\n    ├── PARAMETROS\n    └── Bloco\n        ├── Declaracao\n        │   ├── TIPO (int)\n        │   ├── ID (total)\n        │   ├── OP_ATRIB (=)\n        │   └── NUM (0)\n        ├── FOR\n        │   ├── INICIALIZACAO\n        │   │   └── Declaracao\n        │   │       ├── TIPO (int)\n        │   │       ├── ID (i)\n        │   │       ├── OP_ATRIB (=)\n        │   │       └── NUM (0)\n        │   ├── CONDICAO\n        │   │   └── Expressao (<)\n        │   │       ├── ID (i)\n        │   │       └── NUM (3)\n        │   ├── ATUALIZACAO\n        │   │   └── POSFIXO (++)\n        │   │       └── ID (i)\n        │   └── CORPO\n        │       └── Bloco\n        │           └── IF\n        │               ├── CONDICAO\n        │               │   └── Expressao (==)\n        │               │       ├── Expressao (%)\n        │               │       │   ├── ID (i)\n        │               │       │   └── NUM (2)\n        │               │       └── NUM (0)\n        │               ├── ENTAO\n        │               │   └── Bloco\n        │               │       └── Atribuicao\n        │               │           ├── ID (total)\n        │               │           ├── OP_ATRIB (=)\n        │               │           └── Expressao (+)\n        │               │               ├── ID (total)\n        │               │               └── ID (i)\n        │               └── ELSE\n        │                   └── Bloco\n        │                       └── INSTRUCAO_EXPRESSAO\n        │                           └── ATRIBUICAO_EXPRESSAO (+=)\n        │                               ├── ID (total)\n        │                               └── NUM (1)\n        ├── WHILE\n        │   ├── CONDICAO\n        │   │   └── Expressao (<)\n        │   │       ├── ID (total)\n        │   │       └── NUM (5)\n        │   └── CORPO\n        │       └── Bloco\n        │           └── INSTRUCAO_EXPRESSAO\n        │               └── POSFIXO (++)\n        │                   └── ID (total)\n        ├── DO_WHILE\n        │   ├── CORPO\n        │   │   └── Bloco\n        │   │       └── INSTRUCAO_EXPRESSAO\n        │   │           └── POSFIXO (--)\n        │   │               └── ID (total)\n        │   └── CONDICAO\n        │       └── Expressao (>)\n        │           ├── ID (total)\n        │           └── NUM (3)\n        ├── SWITCH\n        │   ├── SELETOR\n        │   │   └── ID (total)\n        │   └── CORPO\n        │       └── Bloco\n        │           ├── CASE\n        │           │   ├── NUM (3)\n        │           │   ├── INSTRUCAO_EXPRESSAO\n        │           │   │   └── Chamada (printf)\n        │           │   │       ├── ID (printf)\n        │           │   │       └── ARGUMENTOS\n        │           │   │           ├── STRING (\"total = %d\\n\")\n        │           │   │           └── ID (total)\n        │           │   └── BREAK\n        │           └── DEFAULT\n        │               ├── Atribuicao\n        │               │   ├── ID (total)\n        │               │   ├── OP_ATRIB (=)\n        │               │   └── NUM (0)\n        │               └── BREAK\n        ├── INSTRUCAO_EXPRESSAO\n        │   └── Chamada (printf)\n        │       ├── ID (printf)\n        │       └── ARGUMENTOS\n        │           ├── STRING (\"soma = %d\\n\")\n        │           └── Chamada (soma)\n        │               ├── ID (soma)\n        │               └── ARGUMENTOS\n        │                   ├── ID (total)\n        │                   └── NUM (1)\n        └── RETURN\n            └── NUM (0)"
+  ],
+  "ast_estruturada": {
+    "classe": "PROGRAMA",
+    "valor": "",
+    "linha": 1,
+    "coluna": 1,
+    "filhos": [
+      {
+        "classe": "PREPROCESSADOR",
+        "valor": "#include <stdio.h>",
+        "linha": 1,
+        "coluna": 1,
+        "filhos": [
+          {
+            "classe": "PUNCTUATOR",
+            "valor": "#",
+            "linha": 1,
+            "coluna": 1,
+            "filhos": []
+          },
+          {
+            "classe": "KEYWORD",
+            "valor": "include",
+            "linha": 1,
+            "coluna": 2,
+            "filhos": []
+          },
+          {
+            "classe": "HEADER_NAME",
+            "valor": "<stdio.h>",
+            "linha": 1,
+            "coluna": 10,
+            "filhos": []
+          }
+        ]
+      },
+      {
+        "classe": "PROTOTIPO",
+        "valor": "soma",
+        "linha": 3,
+        "coluna": 5,
+        "filhos": [
+          {
+            "classe": "TIPO",
+            "valor": "int",
+            "linha": 3,
+            "coluna": 5,
+            "filhos": []
+          },
+          {
+            "classe": "ID",
+            "valor": "soma",
+            "linha": 3,
+            "coluna": 5,
+            "filhos": []
+          },
+          {
+            "classe": "PARAMETROS",
+            "valor": "",
+            "linha": 3,
+            "coluna": 5,
+            "filhos": [
+              {
+                "classe": "PARAMETRO",
+                "valor": "",
+                "linha": 3,
+                "coluna": 5,
+                "filhos": [
+                  {
+                    "classe": "TIPO",
+                    "valor": "int",
+                    "linha": 3,
+                    "coluna": 5,
+                    "filhos": []
+                  }
+                ]
+              },
+              {
+                "classe": "PARAMETRO",
+                "valor": "",
+                "linha": 3,
+                "coluna": 5,
+                "filhos": [
+                  {
+                    "classe": "TIPO",
+                    "valor": "int",
+                    "linha": 3,
+                    "coluna": 5,
+                    "filhos": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "classe": "FUNCAO",
+        "valor": "soma",
+        "linha": 5,
+        "coluna": 5,
+        "filhos": [
+          {
+            "classe": "TIPO",
+            "valor": "int",
+            "linha": 5,
+            "coluna": 5,
+            "filhos": []
+          },
+          {
+            "classe": "ID",
+            "valor": "soma",
+            "linha": 5,
+            "coluna": 5,
+            "filhos": []
+          },
+          {
+            "classe": "PARAMETROS",
+            "valor": "",
+            "linha": 5,
+            "coluna": 5,
+            "filhos": [
+              {
+                "classe": "PARAMETRO",
+                "valor": "a",
+                "linha": 5,
+                "coluna": 14,
+                "filhos": [
+                  {
+                    "classe": "TIPO",
+                    "valor": "int",
+                    "linha": 5,
+                    "coluna": 14,
+                    "filhos": []
+                  },
+                  {
+                    "classe": "ID",
+                    "valor": "a",
+                    "linha": 5,
+                    "coluna": 14,
+                    "filhos": []
+                  }
+                ]
+              },
+              {
+                "classe": "PARAMETRO",
+                "valor": "b",
+                "linha": 5,
+                "coluna": 21,
+                "filhos": [
+                  {
+                    "classe": "TIPO",
+                    "valor": "int",
+                    "linha": 5,
+                    "coluna": 21,
+                    "filhos": []
+                  },
+                  {
+                    "classe": "ID",
+                    "valor": "b",
+                    "linha": 5,
+                    "coluna": 21,
+                    "filhos": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "classe": "BLOCO",
+            "valor": "",
+            "linha": 5,
+            "coluna": 24,
+            "filhos": [
+              {
+                "classe": "RETURN",
+                "valor": "",
+                "linha": 6,
+                "coluna": 5,
+                "filhos": [
+                  {
+                    "classe": "OP",
+                    "valor": "+",
+                    "linha": 6,
+                    "coluna": 14,
+                    "filhos": [
+                      {
+                        "classe": "ID",
+                        "valor": "a",
+                        "linha": 6,
+                        "coluna": 12,
+                        "filhos": []
+                      },
+                      {
+                        "classe": "ID",
+                        "valor": "b",
+                        "linha": 6,
+                        "coluna": 16,
+                        "filhos": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "classe": "FUNCAO",
+        "valor": "main",
+        "linha": 9,
+        "coluna": 5,
+        "filhos": [
+          {
+            "classe": "TIPO",
+            "valor": "int",
+            "linha": 9,
+            "coluna": 5,
+            "filhos": []
+          },
+          {
+            "classe": "ID",
+            "valor": "main",
+            "linha": 9,
+            "coluna": 5,
+            "filhos": []
+          },
+          {
+            "classe": "PARAMETROS",
+            "valor": "",
+            "linha": 9,
+            "coluna": 5,
+            "filhos": []
+          },
+          {
+            "classe": "BLOCO",
+            "valor": "",
+            "linha": 9,
+            "coluna": 16,
+            "filhos": [
+              {
+                "classe": "DECLARACAO",
+                "valor": "",
+                "linha": 10,
+                "coluna": 9,
+                "filhos": [
+                  {
+                    "classe": "TIPO",
+                    "valor": "int",
+                    "linha": 10,
+                    "coluna": 5,
+                    "filhos": []
+                  },
+                  {
+                    "classe": "ID",
+                    "valor": "total",
+                    "linha": 10,
+                    "coluna": 9,
+                    "filhos": []
+                  },
+                  {
+                    "classe": "ATRIB",
+                    "valor": "=",
+                    "linha": 10,
+                    "coluna": 15,
+                    "filhos": []
+                  },
+                  {
+                    "classe": "NUM",
+                    "valor": "0",
+                    "linha": 10,
+                    "coluna": 17,
+                    "filhos": []
+                  }
+                ]
+              },
+              {
+                "classe": "FOR",
+                "valor": "",
+                "linha": 11,
+                "coluna": 5,
+                "filhos": [
+                  {
+                    "classe": "INICIALIZACAO",
+                    "valor": "",
+                    "linha": 11,
+                    "coluna": 5,
+                    "filhos": [
+                      {
+                        "classe": "DECLARACAO",
+                        "valor": "",
+                        "linha": 11,
+                        "coluna": 14,
+                        "filhos": [
+                          {
+                            "classe": "TIPO",
+                            "valor": "int",
+                            "linha": 11,
+                            "coluna": 10,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "ID",
+                            "valor": "i",
+                            "linha": 11,
+                            "coluna": 14,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "ATRIB",
+                            "valor": "=",
+                            "linha": 11,
+                            "coluna": 16,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "NUM",
+                            "valor": "0",
+                            "linha": 11,
+                            "coluna": 18,
+                            "filhos": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "classe": "CONDICAO",
+                    "valor": "",
+                    "linha": 11,
+                    "coluna": 21,
+                    "filhos": [
+                      {
+                        "classe": "OP",
+                        "valor": "<",
+                        "linha": 11,
+                        "coluna": 23,
+                        "filhos": [
+                          {
+                            "classe": "ID",
+                            "valor": "i",
+                            "linha": 11,
+                            "coluna": 21,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "NUM",
+                            "valor": "3",
+                            "linha": 11,
+                            "coluna": 25,
+                            "filhos": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "classe": "ATUALIZACAO",
+                    "valor": "",
+                    "linha": 11,
+                    "coluna": 28,
+                    "filhos": [
+                      {
+                        "classe": "POSFIXO",
+                        "valor": "++",
+                        "linha": 11,
+                        "coluna": 29,
+                        "filhos": [
+                          {
+                            "classe": "ID",
+                            "valor": "i",
+                            "linha": 11,
+                            "coluna": 28,
+                            "filhos": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "classe": "CORPO",
+                    "valor": "",
+                    "linha": 11,
+                    "coluna": 33,
+                    "filhos": [
+                      {
+                        "classe": "BLOCO",
+                        "valor": "",
+                        "linha": 11,
+                        "coluna": 33,
+                        "filhos": [
+                          {
+                            "classe": "IF",
+                            "valor": "",
+                            "linha": 12,
+                            "coluna": 9,
+                            "filhos": [
+                              {
+                                "classe": "CONDICAO",
+                                "valor": "",
+                                "linha": 12,
+                                "coluna": 9,
+                                "filhos": [
+                                  {
+                                    "classe": "OP",
+                                    "valor": "==",
+                                    "linha": 12,
+                                    "coluna": 19,
+                                    "filhos": [
+                                      {
+                                        "classe": "OP",
+                                        "valor": "%",
+                                        "linha": 12,
+                                        "coluna": 15,
+                                        "filhos": [
+                                          {
+                                            "classe": "ID",
+                                            "valor": "i",
+                                            "linha": 12,
+                                            "coluna": 13,
+                                            "filhos": []
+                                          },
+                                          {
+                                            "classe": "NUM",
+                                            "valor": "2",
+                                            "linha": 12,
+                                            "coluna": 17,
+                                            "filhos": []
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "classe": "NUM",
+                                        "valor": "0",
+                                        "linha": 12,
+                                        "coluna": 22,
+                                        "filhos": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "classe": "ENTAO",
+                                "valor": "",
+                                "linha": 12,
+                                "coluna": 25,
+                                "filhos": [
+                                  {
+                                    "classe": "BLOCO",
+                                    "valor": "",
+                                    "linha": 12,
+                                    "coluna": 25,
+                                    "filhos": [
+                                      {
+                                        "classe": "ATRIBUICAO",
+                                        "valor": "",
+                                        "linha": 13,
+                                        "coluna": 13,
+                                        "filhos": [
+                                          {
+                                            "classe": "ID",
+                                            "valor": "total",
+                                            "linha": 13,
+                                            "coluna": 13,
+                                            "filhos": []
+                                          },
+                                          {
+                                            "classe": "ATRIB",
+                                            "valor": "=",
+                                            "linha": 13,
+                                            "coluna": 19,
+                                            "filhos": []
+                                          },
+                                          {
+                                            "classe": "OP",
+                                            "valor": "+",
+                                            "linha": 13,
+                                            "coluna": 27,
+                                            "filhos": [
+                                              {
+                                                "classe": "ID",
+                                                "valor": "total",
+                                                "linha": 13,
+                                                "coluna": 21,
+                                                "filhos": []
+                                              },
+                                              {
+                                                "classe": "ID",
+                                                "valor": "i",
+                                                "linha": 13,
+                                                "coluna": 29,
+                                                "filhos": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "classe": "ELSE",
+                                "valor": "",
+                                "linha": 14,
+                                "coluna": 11,
+                                "filhos": [
+                                  {
+                                    "classe": "BLOCO",
+                                    "valor": "",
+                                    "linha": 14,
+                                    "coluna": 16,
+                                    "filhos": [
+                                      {
+                                        "classe": "INSTRUCAO_EXPRESSAO",
+                                        "valor": "",
+                                        "linha": 15,
+                                        "coluna": 13,
+                                        "filhos": [
+                                          {
+                                            "classe": "ATRIBUICAO_EXPRESSAO",
+                                            "valor": "+=",
+                                            "linha": 15,
+                                            "coluna": 19,
+                                            "filhos": [
+                                              {
+                                                "classe": "ID",
+                                                "valor": "total",
+                                                "linha": 15,
+                                                "coluna": 13,
+                                                "filhos": []
+                                              },
+                                              {
+                                                "classe": "NUM",
+                                                "valor": "1",
+                                                "linha": 15,
+                                                "coluna": 22,
+                                                "filhos": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "classe": "WHILE",
+                "valor": "",
+                "linha": 18,
+                "coluna": 5,
+                "filhos": [
+                  {
+                    "classe": "CONDICAO",
+                    "valor": "",
+                    "linha": 18,
+                    "coluna": 5,
+                    "filhos": [
+                      {
+                        "classe": "OP",
+                        "valor": "<",
+                        "linha": 18,
+                        "coluna": 18,
+                        "filhos": [
+                          {
+                            "classe": "ID",
+                            "valor": "total",
+                            "linha": 18,
+                            "coluna": 12,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "NUM",
+                            "valor": "5",
+                            "linha": 18,
+                            "coluna": 20,
+                            "filhos": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "classe": "CORPO",
+                    "valor": "",
+                    "linha": 18,
+                    "coluna": 23,
+                    "filhos": [
+                      {
+                        "classe": "BLOCO",
+                        "valor": "",
+                        "linha": 18,
+                        "coluna": 23,
+                        "filhos": [
+                          {
+                            "classe": "INSTRUCAO_EXPRESSAO",
+                            "valor": "",
+                            "linha": 19,
+                            "coluna": 9,
+                            "filhos": [
+                              {
+                                "classe": "POSFIXO",
+                                "valor": "++",
+                                "linha": 19,
+                                "coluna": 14,
+                                "filhos": [
+                                  {
+                                    "classe": "ID",
+                                    "valor": "total",
+                                    "linha": 19,
+                                    "coluna": 9,
+                                    "filhos": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "classe": "DO_WHILE",
+                "valor": "",
+                "linha": 21,
+                "coluna": 5,
+                "filhos": [
+                  {
+                    "classe": "CORPO",
+                    "valor": "",
+                    "linha": 21,
+                    "coluna": 8,
+                    "filhos": [
+                      {
+                        "classe": "BLOCO",
+                        "valor": "",
+                        "linha": 21,
+                        "coluna": 8,
+                        "filhos": [
+                          {
+                            "classe": "INSTRUCAO_EXPRESSAO",
+                            "valor": "",
+                            "linha": 22,
+                            "coluna": 9,
+                            "filhos": [
+                              {
+                                "classe": "POSFIXO",
+                                "valor": "--",
+                                "linha": 22,
+                                "coluna": 14,
+                                "filhos": [
+                                  {
+                                    "classe": "ID",
+                                    "valor": "total",
+                                    "linha": 22,
+                                    "coluna": 9,
+                                    "filhos": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "classe": "CONDICAO",
+                    "valor": "",
+                    "linha": 23,
+                    "coluna": 14,
+                    "filhos": [
+                      {
+                        "classe": "OP",
+                        "valor": ">",
+                        "linha": 23,
+                        "coluna": 20,
+                        "filhos": [
+                          {
+                            "classe": "ID",
+                            "valor": "total",
+                            "linha": 23,
+                            "coluna": 14,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "NUM",
+                            "valor": "3",
+                            "linha": 23,
+                            "coluna": 22,
+                            "filhos": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "classe": "SWITCH",
+                "valor": "",
+                "linha": 24,
+                "coluna": 5,
+                "filhos": [
+                  {
+                    "classe": "SELETOR",
+                    "valor": "",
+                    "linha": 24,
+                    "coluna": 5,
+                    "filhos": [
+                      {
+                        "classe": "ID",
+                        "valor": "total",
+                        "linha": 24,
+                        "coluna": 13,
+                        "filhos": []
+                      }
+                    ]
+                  },
+                  {
+                    "classe": "CORPO",
+                    "valor": "",
+                    "linha": 24,
+                    "coluna": 20,
+                    "filhos": [
+                      {
+                        "classe": "BLOCO",
+                        "valor": "",
+                        "linha": 24,
+                        "coluna": 20,
+                        "filhos": [
+                          {
+                            "classe": "CASE",
+                            "valor": "",
+                            "linha": 25,
+                            "coluna": 9,
+                            "filhos": [
+                              {
+                                "classe": "NUM",
+                                "valor": "3",
+                                "linha": 25,
+                                "coluna": 14,
+                                "filhos": []
+                              },
+                              {
+                                "classe": "INSTRUCAO_EXPRESSAO",
+                                "valor": "",
+                                "linha": 26,
+                                "coluna": 13,
+                                "filhos": [
+                                  {
+                                    "classe": "CHAMADA",
+                                    "valor": "printf",
+                                    "linha": 26,
+                                    "coluna": 13,
+                                    "filhos": [
+                                      {
+                                        "classe": "ID",
+                                        "valor": "printf",
+                                        "linha": 26,
+                                        "coluna": 13,
+                                        "filhos": []
+                                      },
+                                      {
+                                        "classe": "ARGUMENTOS",
+                                        "valor": "",
+                                        "linha": 26,
+                                        "coluna": 19,
+                                        "filhos": [
+                                          {
+                                            "classe": "STRING",
+                                            "valor": "\"total = %d\\n\"",
+                                            "linha": 26,
+                                            "coluna": 20,
+                                            "filhos": []
+                                          },
+                                          {
+                                            "classe": "ID",
+                                            "valor": "total",
+                                            "linha": 26,
+                                            "coluna": 36,
+                                            "filhos": []
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "classe": "BREAK",
+                                "valor": "",
+                                "linha": 27,
+                                "coluna": 13,
+                                "filhos": []
+                              }
+                            ]
+                          },
+                          {
+                            "classe": "DEFAULT",
+                            "valor": "",
+                            "linha": 28,
+                            "coluna": 9,
+                            "filhos": [
+                              {
+                                "classe": "ATRIBUICAO",
+                                "valor": "",
+                                "linha": 29,
+                                "coluna": 13,
+                                "filhos": [
+                                  {
+                                    "classe": "ID",
+                                    "valor": "total",
+                                    "linha": 29,
+                                    "coluna": 13,
+                                    "filhos": []
+                                  },
+                                  {
+                                    "classe": "ATRIB",
+                                    "valor": "=",
+                                    "linha": 29,
+                                    "coluna": 19,
+                                    "filhos": []
+                                  },
+                                  {
+                                    "classe": "NUM",
+                                    "valor": "0",
+                                    "linha": 29,
+                                    "coluna": 21,
+                                    "filhos": []
+                                  }
+                                ]
+                              },
+                              {
+                                "classe": "BREAK",
+                                "valor": "",
+                                "linha": 30,
+                                "coluna": 13,
+                                "filhos": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "classe": "INSTRUCAO_EXPRESSAO",
+                "valor": "",
+                "linha": 32,
+                "coluna": 5,
+                "filhos": [
+                  {
+                    "classe": "CHAMADA",
+                    "valor": "printf",
+                    "linha": 32,
+                    "coluna": 5,
+                    "filhos": [
+                      {
+                        "classe": "ID",
+                        "valor": "printf",
+                        "linha": 32,
+                        "coluna": 5,
+                        "filhos": []
+                      },
+                      {
+                        "classe": "ARGUMENTOS",
+                        "valor": "",
+                        "linha": 32,
+                        "coluna": 11,
+                        "filhos": [
+                          {
+                            "classe": "STRING",
+                            "valor": "\"soma = %d\\n\"",
+                            "linha": 32,
+                            "coluna": 12,
+                            "filhos": []
+                          },
+                          {
+                            "classe": "CHAMADA",
+                            "valor": "soma",
+                            "linha": 32,
+                            "coluna": 27,
+                            "filhos": [
+                              {
+                                "classe": "ID",
+                                "valor": "soma",
+                                "linha": 32,
+                                "coluna": 27,
+                                "filhos": []
+                              },
+                              {
+                                "classe": "ARGUMENTOS",
+                                "valor": "",
+                                "linha": 32,
+                                "coluna": 31,
+                                "filhos": [
+                                  {
+                                    "classe": "ID",
+                                    "valor": "total",
+                                    "linha": 32,
+                                    "coluna": 32,
+                                    "filhos": []
+                                  },
+                                  {
+                                    "classe": "NUM",
+                                    "valor": "1",
+                                    "linha": 32,
+                                    "coluna": 39,
+                                    "filhos": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "classe": "RETURN",
+                "valor": "",
+                "linha": 33,
+                "coluna": 5,
+                "filhos": [
+                  {
+                    "classe": "NUM",
+                    "valor": "0",
+                    "linha": 33,
+                    "coluna": 12,
+                    "filhos": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "erros_lexicos": [],
+  "erros_sintaticos": [],
+  "erros_semanticos": [],
+  "observacao": "AST hierárquica das construções reconhecidas, com validação do contexto: declarações são permitidas no escopo global; instruções executáveis devem estar dentro de funções. A validação semântica é didática. Não há geração de código executável.",
+  "tokens_fora_do_escopo": 0
+}

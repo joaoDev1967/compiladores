@@ -1,6 +1,8 @@
+#include <stdio.h>
+
 int main(){
 	int idade = 20;
-	float altura = 1.75;
+	float altura = 1.75f;
 
 	// verifica a idade
 	if (idade >= 18 && altura > 1.5){

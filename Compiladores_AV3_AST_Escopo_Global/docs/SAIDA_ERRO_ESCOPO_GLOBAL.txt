@@ -1,0 +1,39 @@
+================================================================================
+ANALISADOR AV3 - COMPILADORES | Fonte: exemplos/erro_escopo_global.c
+================================================================================
+
+[2] TABELA DE SÍMBOLOS - ordem de inserção
+  N  Nome                 Categoria              Tipo declarado   Escopo                           Linha  Col
+--------------------------------------------------------------------------------------------------------------
+  1  c                    Variável               int              global                               1    5
+
+[3] ANÁLISE SINTÁTICA - AST DO PROGRAMA
+
+Árvore 1:
+Programa
+├── Declaracao
+│   ├── TIPO (int)
+│   ├── ID (c)
+│   ├── OP_ATRIB (=)
+│   └── NUM (0)
+├── Atribuicao
+│   ├── ID (c)
+│   ├── OP_ATRIB (=)
+│   └── NUM (1)
+└── Atribuicao
+    ├── ID (c)
+    ├── OP_ATRIB (=)
+    └── NUM (2)
+
+[4] DIAGNÓSTICOS LÉXICOS
+Nenhum diagnóstico nesta etapa.
+
+[5] DIAGNÓSTICOS SINTÁTICOS
+[ERRO SINTÁTICO] Linha 2, coluna 1: Instrução executável fora de função: 'c'. Comandos devem estar dentro de funções.
+[ERRO SINTÁTICO] Linha 3, coluna 1: Instrução executável fora de função: 'c'. Comandos devem estar dentro de funções.
+
+[6] ANÁLISE SEMÂNTICA - DIAGNÓSTICOS
+Nenhum diagnóstico nesta etapa.
+
+[7] RESUMO
+Tokens: 13 | Entradas na tabela: 1 | Declarações: 1 | ASTs: 1 | Erros: 2

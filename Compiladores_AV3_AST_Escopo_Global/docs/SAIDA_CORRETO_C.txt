@@ -1,0 +1,68 @@
+================================================================================
+ANALISADOR AV3 - COMPILADORES | Fonte: exemplos/correto.c
+================================================================================
+
+[2] TABELA DE SÍMBOLOS - ordem de inserção
+  N  Nome                 Categoria              Tipo declarado   Escopo                           Linha  Col
+--------------------------------------------------------------------------------------------------------------
+  1  main                 Função                 int              global                               2    5
+  2  a                    Variável               int              global/funcao1                       3    9
+  3  x                    Variável               int              global/funcao1                       4    9
+  4  media                Variável               float            global/funcao1                       6   11
+
+[3] ANÁLISE SINTÁTICA - AST DO PROGRAMA
+
+Árvore 1:
+Programa
+├── PREPROCESSADOR (#include <stdio.h>)
+│   ├── PUNCTUATOR (#)
+│   ├── KEYWORD (include)
+│   └── HEADER_NAME (<stdio.h>)
+└── Funcao (main)
+    ├── TIPO (int)
+    ├── ID (main)
+    ├── PARAMETROS
+    └── Bloco
+        ├── Declaracao
+        │   ├── TIPO (int)
+        │   ├── ID (a)
+        │   ├── OP_ATRIB (=)
+        │   └── NUM (3)
+        ├── Declaracao
+        │   ├── TIPO (int)
+        │   └── ID (x)
+        ├── Atribuicao
+        │   ├── ID (x)
+        │   ├── OP_ATRIB (=)
+        │   └── Expressao (+)
+        │       ├── ID (a)
+        │       └── NUM (5)
+        ├── Declaracao
+        │   ├── TIPO (float)
+        │   ├── ID (media)
+        │   ├── OP_ATRIB (=)
+        │   └── Expressao (/)
+        │       ├── Expressao (+)
+        │       │   ├── ID (x)
+        │       │   └── NUM (2)
+        │       └── NUM (2)
+        ├── INSTRUCAO_EXPRESSAO
+        │   └── Chamada (printf)
+        │       ├── ID (printf)
+        │       └── ARGUMENTOS
+        │           ├── STRING ("Exemplo analisado: %.1f\n")
+        │           └── ID (media)
+        └── RETURN
+            └── NUM (0)
+
+[4] DIAGNÓSTICOS LÉXICOS
+Nenhum diagnóstico nesta etapa.
+
+[5] DIAGNÓSTICOS SINTÁTICOS
+Nenhum diagnóstico nesta etapa.
+
+[6] ANÁLISE SEMÂNTICA - DIAGNÓSTICOS
+Nenhum diagnóstico nesta etapa.
+
+[7] RESUMO
+Tokens: 44 | Entradas na tabela: 4 | Declarações: 4 | ASTs: 1 | Erros: 0

@@ -1,0 +1,251 @@
+{
+  "tokens": [
+    {
+      "tipo": "INT",
+      "lexema": "int",
+      "linha": 1,
+      "coluna": 1,
+      "ordem": 1
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "c",
+      "linha": 1,
+      "coluna": 5,
+      "ordem": 2
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 1,
+      "coluna": 7,
+      "ordem": 3
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "0",
+      "linha": 1,
+      "coluna": 9,
+      "ordem": 4
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 1,
+      "coluna": 10,
+      "ordem": 5
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "c",
+      "linha": 2,
+      "coluna": 1,
+      "ordem": 6
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 2,
+      "coluna": 3,
+      "ordem": 7
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "1",
+      "linha": 2,
+      "coluna": 5,
+      "ordem": 8
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 2,
+      "coluna": 6,
+      "ordem": 9
+    },
+    {
+      "tipo": "IDENTIFIER",
+      "lexema": "c",
+      "linha": 3,
+      "coluna": 1,
+      "ordem": 10
+    },
+    {
+      "tipo": "ASSIGN",
+      "lexema": "=",
+      "linha": 3,
+      "coluna": 3,
+      "ordem": 11
+    },
+    {
+      "tipo": "NUMBER",
+      "lexema": "2",
+      "linha": 3,
+      "coluna": 5,
+      "ordem": 12
+    },
+    {
+      "tipo": "SEMICOLON",
+      "lexema": ";",
+      "linha": 3,
+      "coluna": 6,
+      "ordem": 13
+    }
+  ],
+  "tabela_simbolos": [
+    {
+      "ordem": 1,
+      "lexema": "c",
+      "categoria": "Variável",
+      "tipo_declarado": "int",
+      "escopo": "global",
+      "linha": 1,
+      "coluna": 5
+    }
+  ],
+  "simbolos": [
+    {
+      "ordem": 1,
+      "lexema": "c",
+      "categoria": "Variável",
+      "token": "IDENTIFIER",
+      "tipo_declarado": "int",
+      "escopo": "global",
+      "linha": 1,
+      "coluna": 5
+    }
+  ],
+  "palavras_reservadas": [
+    {
+      "ordem": 1,
+      "lexema": "int",
+      "token": "INT",
+      "linha": 1,
+      "coluna": 1,
+      "ocorrencias": 1
+    }
+  ],
+  "ast": [
+    "Programa\n├── Declaracao\n│   ├── TIPO (int)\n│   ├── ID (c)\n│   ├── OP_ATRIB (=)\n│   └── NUM (0)\n├── Atribuicao\n│   ├── ID (c)\n│   ├── OP_ATRIB (=)\n│   └── NUM (1)\n└── Atribuicao\n    ├── ID (c)\n    ├── OP_ATRIB (=)\n    └── NUM (2)"
+  ],
+  "ast_estruturada": {
+    "classe": "PROGRAMA",
+    "valor": "",
+    "linha": 1,
+    "coluna": 1,
+    "filhos": [
+      {
+        "classe": "DECLARACAO",
+        "valor": "",
+        "linha": 1,
+        "coluna": 5,
+        "filhos": [
+          {
+            "classe": "TIPO",
+            "valor": "int",
+            "linha": 1,
+            "coluna": 1,
+            "filhos": []
+          },
+          {
+            "classe": "ID",
+            "valor": "c",
+            "linha": 1,
+            "coluna": 5,
+            "filhos": []
+          },
+          {
+            "classe": "ATRIB",
+            "valor": "=",
+            "linha": 1,
+            "coluna": 7,
+            "filhos": []
+          },
+          {
+            "classe": "NUM",
+            "valor": "0",
+            "linha": 1,
+            "coluna": 9,
+            "filhos": []
+          }
+        ]
+      },
+      {
+        "classe": "ATRIBUICAO",
+        "valor": "",
+        "linha": 2,
+        "coluna": 1,
+        "filhos": [
+          {
+            "classe": "ID",
+            "valor": "c",
+            "linha": 2,
+            "coluna": 1,
+            "filhos": []
+          },
+          {
+            "classe": "ATRIB",
+            "valor": "=",
+            "linha": 2,
+            "coluna": 3,
+            "filhos": []
+          },
+          {
+            "classe": "NUM",
+            "valor": "1",
+            "linha": 2,
+            "coluna": 5,
+            "filhos": []
+          }
+        ]
+      },
+      {
+        "classe": "ATRIBUICAO",
+        "valor": "",
+        "linha": 3,
+        "coluna": 1,
+        "filhos": [
+          {
+            "classe": "ID",
+            "valor": "c",
+            "linha": 3,
+            "coluna": 1,
+            "filhos": []
+          },
+          {
+            "classe": "ATRIB",
+            "valor": "=",
+            "linha": 3,
+            "coluna": 3,
+            "filhos": []
+          },
+          {
+            "classe": "NUM",
+            "valor": "2",
+            "linha": 3,
+            "coluna": 5,
+            "filhos": []
+          }
+        ]
+      }
+    ]
+  },
+  "erros_lexicos": [],
+  "erros_sintaticos": [
+    {
+      "fase": "SINTÁTICO",
+      "linha": 2,
+      "coluna": 1,
+      "mensagem": "Instrução executável fora de função: 'c'. Comandos devem estar dentro de funções."
+    },
+    {
+      "fase": "SINTÁTICO",
+      "linha": 3,
+      "coluna": 1,
+      "mensagem": "Instrução executável fora de função: 'c'. Comandos devem estar dentro de funções."
+    }
+  ],
+  "erros_semanticos": [],
+  "observacao": "AST hierárquica das construções reconhecidas, com validação do contexto: declarações são permitidas no escopo global; instruções executáveis devem estar dentro de funções. A validação semântica é didática. Não há geração de código executável.",
+  "tokens_fora_do_escopo": 0
+}

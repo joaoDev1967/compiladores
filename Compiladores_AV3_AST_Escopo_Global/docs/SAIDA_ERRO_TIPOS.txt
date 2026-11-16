@@ -1,0 +1,50 @@
+================================================================================
+ANALISADOR AV3 - COMPILADORES | Fonte: exemplos/erro_tipos.c
+================================================================================
+
+[2] TABELA DE SÍMBOLOS - ordem de inserção
+  N  Nome                 Categoria              Tipo declarado   Escopo                           Linha  Col
+--------------------------------------------------------------------------------------------------------------
+  1  main                 Função                 int              global                               1    5
+  2  resultado            Variável               int              global/funcao1                       2    9
+  3  media                Variável               float            global/funcao1                       3   11
+
+[3] ANÁLISE SINTÁTICA - AST DO PROGRAMA
+
+Árvore 1:
+Programa
+└── Funcao (main)
+    ├── TIPO (int)
+    ├── ID (main)
+    ├── PARAMETROS
+    └── Bloco
+        ├── Declaracao
+        │   ├── TIPO (int)
+        │   ├── ID (resultado)
+        │   ├── OP_ATRIB (=)
+        │   └── STRING ("texto")
+        ├── Declaracao
+        │   ├── TIPO (float)
+        │   ├── ID (media)
+        │   ├── OP_ATRIB (=)
+        │   └── NUM (2.5)
+        ├── Atribuicao
+        │   ├── ID (resultado)
+        │   ├── OP_ATRIB (=)
+        │   └── ID (media)
+        └── RETURN
+            └── NUM (0)
+
+[4] DIAGNÓSTICOS LÉXICOS
+Nenhum diagnóstico nesta etapa.
+
+[5] DIAGNÓSTICOS SINTÁTICOS
+Nenhum diagnóstico nesta etapa.
+
+[6] ANÁLISE SEMÂNTICA - DIAGNÓSTICOS
+[ERRO SEMÂNTICO] Linha 2, coluna 9: Incompatibilidade de tipos: não é possível atribuir String a int ('resultado').
+[ERRO SEMÂNTICO] Linha 3, coluna 11: Incompatibilidade de tipos: não é possível atribuir double a float ('media').
+[ERRO SEMÂNTICO] Linha 4, coluna 5: Incompatibilidade de tipos: não é possível atribuir float a int ('resultado').
+
+[7] RESUMO
+Tokens: 23 | Entradas na tabela: 3 | Declarações: 3 | ASTs: 1 | Erros: 3

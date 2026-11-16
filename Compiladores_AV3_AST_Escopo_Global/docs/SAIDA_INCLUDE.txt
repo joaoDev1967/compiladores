@@ -1,0 +1,3 @@
+- # -> PUNCTUATOR
+- include -> KEYWORD
+- <stdio.h> -> HEADER_NAME

@@ -1,0 +1,10 @@
+Compiladores AV3 - AST, escopo global e classificação de #include
+
+Esta entrega mantém a AST e a validação global e corrige os tokens de #include:
+# -> PUNCTUATOR; include -> KEYWORD; <stdio.h> -> HEADER_NAME.
+No exemplo int c=0; c=1; c=2;, a declaração global é aceita e as duas
+atribuições geram erros separados por estarem fora de uma função.
+
+Confira exemplos/ast_completa.c e exemplos/erro_escopo_global.c.
+Confira a saída léxica em exemplos/include.c.
+Validação: 194 testes aprovados. Resultado em docs/LOG_TESTES.txt.

@@ -1,0 +1,45 @@
+================================================================================
+ANALISADOR AV3 - COMPILADORES | Fonte: exemplos/erro_nao_declarada.c
+================================================================================
+
+[2] TABELA DE SÍMBOLOS - ordem de inserção
+  N  Nome                 Categoria              Tipo declarado   Escopo                           Linha  Col
+--------------------------------------------------------------------------------------------------------------
+  1  main                 Função                 int              global                               1    5
+  2  a                    Variável               int              global/funcao1                       3    9
+
+[3] ANÁLISE SINTÁTICA - AST DO PROGRAMA
+
+Árvore 1:
+Programa
+└── Funcao (main)
+    ├── TIPO (int)
+    ├── ID (main)
+    ├── PARAMETROS
+    └── Bloco
+        ├── Atribuicao
+        │   ├── ID (total)
+        │   ├── OP_ATRIB (=)
+        │   └── NUM (10)
+        ├── Declaracao
+        │   ├── TIPO (int)
+        │   ├── ID (a)
+        │   ├── OP_ATRIB (=)
+        │   └── Expressao (+)
+        │       ├── ID (total)
+        │       └── NUM (2)
+        └── RETURN
+            └── NUM (0)
+
+[4] DIAGNÓSTICOS LÉXICOS
+Nenhum diagnóstico nesta etapa.
+
+[5] DIAGNÓSTICOS SINTÁTICOS
+Nenhum diagnóstico nesta etapa.
+
+[6] ANÁLISE SEMÂNTICA - DIAGNÓSTICOS
+[ERRO SEMÂNTICO] Linha 2, coluna 5: Variável 'total' utilizada sem declaração prévia.
+[ERRO SEMÂNTICO] Linha 3, coluna 13: Variável 'total' utilizada sem declaração prévia.
+
+[7] RESUMO
+Tokens: 20 | Entradas na tabela: 2 | Declarações: 2 | ASTs: 1 | Erros: 2
